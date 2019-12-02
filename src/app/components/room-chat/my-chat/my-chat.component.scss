@@ -1,0 +1,12 @@
+div {
+
+  .height-side {
+    height: 569 px;
+  }
+
+ .col,
+ [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

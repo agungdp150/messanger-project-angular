@@ -1,0 +1,23 @@
+.scr-side {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 535px;
+
+  div {
+
+    .user {
+      background: cornflowerblue;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 3px;
+      h4 {
+        font-size: 18px;
+
+        i {
+          font-size: 10px;
+          color: chartreuse;
+        }
+      }
+    }
+  }
+}

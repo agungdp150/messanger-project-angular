@@ -1,0 +1,26 @@
+.bg-color-1 {
+  background-color: #222222;
+  height: 568px;
+
+  div {
+    margin: auto;
+
+    h3 {
+      font-weight: 800;
+    }
+
+    .center-form {
+      padding-top: 60px;
+    }
+
+    form {
+      .space-form {
+        margin: 20px 0px;
+
+        label {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

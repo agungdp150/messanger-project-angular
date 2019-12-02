@@ -1,0 +1,31 @@
+div {
+
+  nav {
+    background: #375A7F;
+  }
+  .my-logo {
+    font-weight: 800;
+    font-family: serif;
+    font-style: italic;
+    font-size: 24px;
+  }
+
+  .my-nav {
+    ul {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      li {
+        text-decoration: none;
+        list-style: none;
+        margin-top: 10px;
+        a {
+          margin: 0px 10px;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

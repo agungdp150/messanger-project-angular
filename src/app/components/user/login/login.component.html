@@ -1,0 +1,59 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+<div class="bg-color-1">
+  <div class="container">
+    <div class="row  center-form ">
+      <div class="col-md-6 mb-4">
+        <div class="card">
+
+          <div class="card-body">
+            <h3 class="text-center default-text py-3"> Login</h3>
+            <form>
+              <div class="md-form space-form">
+                <label>Your Name</label>
+                <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Kiera Considin" 
+                [(ngModel)]="loginData.name" 
+                name="name"
+                >
+              </div>
+              <div class="md-form space-form">
+                <label>Your email</label>
+                <input 
+                type="email" 
+                class="form-control" 
+                placeholder="mychat@email.com" 
+                [(ngModel)]="loginData.email" 
+                name="email"
+                >
+              </div>
+              <div class="md-form space-form">
+                <label>Your password</label>
+                <input 
+                type="password" 
+                class="form-control" 
+                placeholder="*********" 
+                [(ngModel)]="loginData.password"
+                name="password"
+                >
+              </div>
+              <div class="text-center">
+                <button 
+                type="submit" 
+                class="btn btn-primary btn-sm"
+                (click)="loginUsers()"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

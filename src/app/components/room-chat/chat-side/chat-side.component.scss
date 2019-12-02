@@ -1,0 +1,17 @@
+.width-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  height: 568px;
+  overflow: auto;
+}
+
+@media only screen and (min-height : 768px) {
+  .width-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 702px;
+    overflow: auto;
+  }
+}
