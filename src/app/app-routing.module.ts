@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MyChatComponent } from './components/room-chat/my-chat/my-chat.component';
-import { NotFoundComponent } from './404';
+import { NotFoundComponent } from './shared/404';
 
 
 const routes: Routes = [
@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren : './components/user/user.module#UserModule'
   },
   {
-    path : '',
+    path : 'my-chat',
     component : MyChatComponent
   },
 

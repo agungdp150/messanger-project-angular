@@ -6,15 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Module
 import { UserModule } from './components/user/user.module';
+import { SharedModule } from './shared/shared.module';
+import { RoomChatModule } from './components/room-chat/room-chat.module';
 
 // Component
-import { ChatSideComponent } from './components/room-chat/chat-side/chat-side.component';
-import { FormComponent } from './components/room-chat/form/form.component';
-import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
-import { MyChatComponent } from './components/room-chat/my-chat/my-chat.component';
-
-import { NotFoundComponent } from './404';
+import { NotFoundComponent } from './shared/404';
 
 // Service
 import { AuthService } from './service/auth.service';
@@ -24,13 +22,10 @@ import { ProtectNavGuard } from './service/protect-nav.guard';
 import { BootsrapModule } from './bootsrap/bootsrap.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    ChatSideComponent,
-    FormComponent,
-    SidenavComponent,
-    MyChatComponent,
     NotFoundComponent,
   ],
   imports: [
@@ -39,7 +34,9 @@ import { BootsrapModule } from './bootsrap/bootsrap.module';
     BootsrapModule,
     HttpClientModule,
     FormsModule,
-    UserModule
+    UserModule,
+    SharedModule,
+    RoomChatModule
   ],
   providers: [AuthService, ProtectNavGuard],
   bootstrap: [AppComponent]

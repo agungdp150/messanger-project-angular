@@ -11,14 +11,15 @@ const httpOptions = {
 @Injectable()
 export class AuthService {
 ß  
-  private registerApi = "api/users";
-  private loginApi = "api/login";
+  private registerApi = "/api/users";
+  private loginApi = "/api/login";
 
   constructor(private http: HttpClient, private navRouter : Router) {}
 
   signUpUSers(newUser) {
     return this.http.post<any>(this.registerApi, newUser, httpOptions);
   }
+  
   loginUsers(user) {
     return this.http.post<any>(this.loginApi, user, httpOptions);
   }
