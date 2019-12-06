@@ -8,7 +8,9 @@ const httpOptions = {
   })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 ß  
   private registerApi = "/api/users";
@@ -22,6 +24,10 @@ export class AuthService {
   
   loginUsers(user) {
     return this.http.post<any>(this.loginApi, user, httpOptions);
+  }
+
+  handleGetToken () {
+    return localStorage.getItem('token')
   }
 
   handleProtectPage() {

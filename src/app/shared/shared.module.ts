@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { NavbarComponent } from '../components/layout/navbar/navbar.component';
 import { SidenavComponent } from '../components/layout/sidenav/sidenav.component';
+import { BootsrapModule } from '../bootsrap/bootsrap.module';
 
 
 
@@ -18,14 +19,16 @@ import { SidenavComponent } from '../components/layout/sidenav/sidenav.component
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    BootsrapModule
   ],
   exports : [
     FormsModule,
     RouterModule,
     AlertComponent,
     NavbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    BootsrapModule
   ]
 })
 export class SharedModule { }

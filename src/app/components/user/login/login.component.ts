@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
         response => {
           console.log(response);
           localStorage.setItem('token', response);
-          this.routeNavigate.navigate(['/chat'])
+          this.routeNavigate.navigate(['/'])
         },
         error => console.log(error)
       )
