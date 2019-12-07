@@ -96,18 +96,37 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form
+                  #form ="ngForm"
+                  (ngSubmit)="handleNewRoom(form)" 
+                  >
                     <input 
                     type="text" 
                     class="form-control" 
                     placeholder="Room name" 
-                    [(ngModel)]="createRoom.room_name"  
-                    name="room_name">
+                    ngModel  
+                    name="room_name"
+                    >
+                    <!-- <div class="form-group my-3">
+                      <label for="exampleSelect1">Choose Your Id</label>
+                      <select 
+                      class="form-control" 
+                      id="exampleSelect1"
+                      ngModel
+                      name= "user_id"
+                      >
+                        <option value="1">Agung | ID: 1</option>
+                        <option value="2">Pro1 | ID: 2</option>
+                        <option value="3">Lynn | ID: 3</option>
+                        <option value="4">Odell | ID: 4</option>
+                        <option value="5">Godfrey | ID: 5</option>
+                      </select>
+                    </div> -->
                     <button 
                     type="submit" 
                     class="btn btn-primary btn-sm" 
-                    style="margin: 10px 0px;"
-                    (click)="handleNewRoom()">+ Room
+                    style="margin: 10px 0px;">
+                    + Room
                     </button>
                   </form>
                 </div>
@@ -132,7 +151,7 @@
                       <div class="card-body">
                         <h4 class="card-title">Create by Admin {{room.admin_id}}</h4>
                         <div class="modal-footer">
-                          <button class="btn btn-secondary border btn-sm">Enter Room</button>
+                          <button class="btn btn-secondary border btn-sm" (click)="myChatRoom(room.id)">Enter Room</button>
                         </div>
                       </div>
                     </div>

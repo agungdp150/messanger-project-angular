@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -9,33 +9,49 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
-ß  
+  ß;
   private registerApi = "/api/users";
   private loginApi = "/api/login";
 
-  constructor(private http: HttpClient, private navRouter : Router) {}
+  constructor(private http: HttpClient, private navRouter: Router) {}
 
-  signUpUSers(newUser) {
-    return this.http.post<any>(this.registerApi, newUser, httpOptions);
-  }
-  
-  loginUsers(user) {
-    return this.http.post<any>(this.loginApi, user, httpOptions);
+  signUpUSers(name: string, email: string, password: string) {
+    return this.http.post<any>(
+      this.registerApi,
+      {
+        name: name,
+        email: email,
+        password: password
+      },
+      httpOptions
+    );
   }
 
-  handleGetToken () {
-    return localStorage.getItem('token')
+  loginUsers(name: string, email: string, password: string) {
+    return this.http.post<any>(
+      this.loginApi,
+      {
+        name: name,
+        email: email,
+        password: password
+      },
+      httpOptions
+    );
+  }
+
+  handleGetToken() {
+    return localStorage.getItem("token");
   }
 
   handleProtectPage() {
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem("token");
   }
 
   handleLogout() {
-    localStorage.removeItem('token')
-    this.navRouter.navigate(['/user/login'])
+    localStorage.removeItem("token");
+    this.navRouter.navigate(["/user/login"]);
   }
 }

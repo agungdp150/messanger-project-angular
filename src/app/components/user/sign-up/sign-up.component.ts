@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../service/auth.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { AuthService } from '../../../service/auth.service';
 })
 export class SignUpComponent implements OnInit {
 
-  signUpData = {}
+  isLoading = false;
+  error : boolean = false;
+
 
   constructor(private authService: AuthService) { }
 
@@ -16,12 +19,32 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  signUpUsers() {
-    // console.log(this.signUpData)
-    this.authService.signUpUSers(this.signUpData)
+  signUpUsers(myForm : NgForm) {
+    if (!myForm.valid) {
+      return;
+    }
+
+    this.isLoading = true;
+
+    let name = myForm.value.name;
+    let email = myForm.value.email;
+    let password = myForm.value.password;
+
+    this.authService.signUpUSers(name, email, password)     
     .subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    )
+      response => {
+        console.log(response);
+        this.isLoading = false;
+      },
+      errorRes => {
+        console.log(errorRes);
+        this.isLoading = false;
+        this.error = true;
+      }
+    );
+    setTimeout(() => {
+      this.error = false
+    }, 2000)
+    myForm.reset();
   }
 }

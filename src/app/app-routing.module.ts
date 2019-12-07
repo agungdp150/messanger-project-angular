@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren : './components/user/user.module#UserModule'
   },
   {
-    path : 'chat',
+    path : 'room/:id',
     loadChildren : './components/room-chat/room-chat.module#RoomChatModule',
     canActivate : [ProtectNavGuard]
   },

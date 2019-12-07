@@ -10,15 +10,25 @@
 
           <div class="card-body">
             <h3 class="text-center default-text py-1"> Sign Up</h3>
-            <form>
+            <div *ngIf="isLoading" style="text-align: center;">
+              <app-loading></app-loading>
+            </div>
+            <div class="alert alert-dismissible alert-danger" *ngIf="error">
+                <strong>Something went wrong</strong> and try submitting again.
+            </div>
+            <form 
+            #form="ngForm" 
+            (ngSubmit)="signUpUsers(form)" 
+            *ngIf="!isLoading">
             <div class="md-form space-form">
                 <label>Name</label>
                 <input 
                 type="text" 
                 class="form-control" 
                 placeholder="Kiera Considine"
-                [(ngModel)]="signUpData.name"
+                ngModel
                 name="name"
+                required
                 >
               </div>
               <div class="md-form space-form">
@@ -27,8 +37,10 @@
                 type="email" 
                 class="form-control" 
                 placeholder="mychat@email.com"
-                [(ngModel)]="signUpData.email"
+                ngModel
                 name="email"
+                required
+                email
                 >
               </div>
               <div class="md-form space-form">
@@ -38,15 +50,16 @@
                 class="form-control" 
                 placeholder="*********" 
                 required
-                [(ngModel)]="signUpData.password"
+                ngModel
                 name="password"
+                required
                 >
               </div>
               <div class="text-center py-2">
                 <button 
                 type="submit" 
                 class="btn btn-primary btn-sm"
-                (click)="signUpUsers()"
+                [disabled]="!form.valid"
                 >
                   Sign Up
                 </button>

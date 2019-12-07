@@ -1,10 +1,7 @@
 <div class="scr-side">
-  <div>
+  <div *ngFor="let roomMember of memberRoom">
     <div class="user">
-      <h4><i class="fas fa-circle"></i> Bonnie Lockman </h4>
-    </div>
-    <div class="user">
-      <h4><i class="fas fa-circle"></i> Flossie Moore </h4>
+      <h4><i class="fas fa-circle"></i> {{roomMember.user.name}} </h4>
     </div>
   </div>
 </div>

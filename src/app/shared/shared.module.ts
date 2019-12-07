@@ -6,6 +6,7 @@ import { AlertComponent } from './alert/alert.component';
 import { NavbarComponent } from '../components/layout/navbar/navbar.component';
 import { SidenavComponent } from '../components/layout/sidenav/sidenav.component';
 import { BootsrapModule } from '../bootsrap/bootsrap.module';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
@@ -13,22 +14,23 @@ import { BootsrapModule } from '../bootsrap/bootsrap.module';
   declarations: [
     AlertComponent,
     NavbarComponent,
-    SidenavComponent
-  
+    SidenavComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    BootsrapModule
+    BootsrapModule,
   ],
   exports : [
     FormsModule,
     RouterModule,
     AlertComponent,
     NavbarComponent,
+    LoadingComponent,
     SidenavComponent,
-    BootsrapModule
+    BootsrapModule,
   ]
 })
 export class SharedModule { }

@@ -31,8 +31,10 @@ export class UserService {
   }
 
   // New Room
-  handleNewRoom(myRoom1) : Observable<any>{
-    return this.http.post<any>(this.myRoom, myRoom1, httpOptions);
+  handleNewRoom(room_name : string) : Observable<any>{
+    return this.http.post<any>(this.myRoom, {
+      room_name : room_name
+    }, httpOptions);
   }
 
   // Add User
