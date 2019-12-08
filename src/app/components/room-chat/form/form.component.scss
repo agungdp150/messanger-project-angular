@@ -6,7 +6,12 @@ div {
       display: flex;
       input {
         width: 96%;
+        border-radius: 0px;
+      }
 
+      button {
+        padding: 0px 20px;
+        border-radius: 0px;
       }
     }
   }
