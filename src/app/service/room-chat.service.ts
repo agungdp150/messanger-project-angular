@@ -38,12 +38,9 @@ export class RoomChatService {
   }
 
   // handleSendMessage
-  handleSend (room_id : number, content : string): Observable<any>{
-    return this.http.post<any>(
-      this.sendMessage, {
-        room_id : room_id,
-        content : content
-      }, httpOptions
+  handleSend (textSend : ListMessage): Observable<ListMessage>{
+    return this.http.post<ListMessage>(
+      this.sendMessage, textSend, httpOptions
     );
   }
 }

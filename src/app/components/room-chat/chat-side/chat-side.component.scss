@@ -1,44 +1,40 @@
-.width-image {
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-  height: 568px;
-  overflow: auto;
-  position: absolute;
-  z-index: -4;
-}
-
-.c-msg {
-  overflow: auto;
-  height: 529px;  
-}
-
-.width-buble {
-  padding: 5px;
-  display: flex;
-  justify-content: flex-start;
-  .chat-msg {
-    max-width: 480px;
-  }
-}
-
-.width-buble-user {
-  padding: 5px;
-  display: flex;
-  justify-content: flex-end;
-  .chat-msg {
-    max-width: 480px;
-  }
-}
-
-
-
-@media only screen and (min-height : 768px) {
+div {
   .width-image {
+    position: absolute;
+    height: 550px;
     width: 100%;
-    object-fit: cover;
-    object-position: center;
-    height: 702px;
-    overflow: auto;
+    z-index: -10;
   }
+
+  .chat-overflow {
+    overflow: auto;
+    height: 530px;
+  }
+
+
+  .width-buble {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    p{
+      font-size: 14px;
+    }
+    .chat-msg {
+      max-width: 480px;
+    }
+  }
+  
+  .width-buble-user {
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      font-size: 14px;
+    }
+    .chat-msg {
+      max-width: 480px;
+    }
+  }
+  
 }

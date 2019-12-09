@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
 import { AuthService } from '../../../service/auth.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class SignUpComponent implements OnInit {
   error : boolean = false;
 
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private routeNavigate: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -35,6 +39,7 @@ export class SignUpComponent implements OnInit {
       response => {
         console.log(response);
         this.isLoading = false;
+        this.routeNavigate.navigate(["/user/login"]);
       },
       errorRes => {
         console.log(errorRes);

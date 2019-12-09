@@ -1,9 +1,11 @@
 div {
-
-
   .msg-form {
     div {
       display: flex;
+      position: absolute;
+      z-index: 10;
+      top: 528px;
+      width: 100%;
       input {
         width: 96%;
         border-radius: 0px;

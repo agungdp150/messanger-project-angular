@@ -46,8 +46,8 @@
           </ng-template>
 
           <hr class="py-1">
-
-          <table class="table table-hover">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-bordered table-striped mb-0">
             <thead>
               <tr class="bg-dark text-white">
                 <th scope="col">No</th>
@@ -56,15 +56,16 @@
                 <th scope="col" class="text-center">User (ID)</th>
               </tr>
             </thead>
-            <tbody *ngFor="let user of users">
+            <tbody *ngFor="let user of users; let i = index">
               <tr class="table-secondary">
-                <th scope="row">{{ user.id }}</th>
+                <th scope="row">{{ i+1 }}</th>
                 <td> {{user.name}} </td>
                 <td>{{ user.email }}</td>
                 <td class="text-center" > {{user.id}} </td>
               </tr>
             </tbody>
           </table>
+        </div>
         </tab>
         <tab heading="Chat Room">
           <h3 
@@ -108,22 +109,6 @@
                     name="room_name"
                     required
                     >
-                    <!-- <div class="form-group my-3">
-                      <label for="exampleSelect1">Choose Your Id</label>
-                      <select 
-                      class="form-control" 
-                      id="exampleSelect1"
-                      ngModel
-                      name= "user_id"
-                      required
-                      >
-                      <option
-                      *ngFor="let user of users" 
-                      value="{{ user.id }}"
-                      >{{user.name}} | ID: {{ user.id }}
-                      </option>
-                      </select>
-                    </div> -->
                     <button 
                     type="submit" 
                     class="btn btn-primary btn-sm" 

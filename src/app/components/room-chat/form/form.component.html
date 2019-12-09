@@ -1,4 +1,4 @@
-<div>
+<div class="text-form">
   <form 
   class="msg-form" 
   #form="ngForm"
@@ -12,7 +12,7 @@
       placeholder="Write a message"
       ngModel
       name="content"
-      (keydown)="handleSend($event)"
+      (keydown)="handleSendText($event)"
       >
       <input
       type="number"
@@ -20,7 +20,7 @@
       ngModel 
       value=""
       name="room_id"
-      (keydown) = "handleSend($event)"
+      (keydown) = "handleSendText($event)"
       >
       <button 
       type="submit" 

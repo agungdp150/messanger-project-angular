@@ -1,14 +1,23 @@
-<app-navbar></app-navbar>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-3 bg-info text-white p-3 height-side">
-      <app-sidenav></app-sidenav>
+<div>
+  <app-navbar></app-navbar>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4 bg-info text-white p-3">
+        <app-sidenav></app-sidenav>
+      </div>
+      <div class="col-8 no-gutters">
+        <div>
+          <app-chat-side 
+          [sender]= "myMessageList"
+          ></app-chat-side>
+        </div>
+        <div>
+          <app-form
+          (myMessage)="myMessage($event)"
+          ></app-form> 
+        </div>
+      </div>
     </div>
-    <div class="col-9 no-gutters">
-      <app-chat-side></app-chat-side>
-      <app-form></app-form>
-    </div>
-  </div>
-  <div>
   </div>
 </div>

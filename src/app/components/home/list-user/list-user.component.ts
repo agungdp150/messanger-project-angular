@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import { UserService } from "src/app/service/user.service";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { User } from "src/app/model/user.model";
@@ -22,7 +22,7 @@ export class ListUserComponent implements OnInit {
     private userService: UserService,
     private modalService: BsModalService,
     private authService: AuthService,
-    private routeNav : Router
+    private routeNav: Router
   ) {}
 
   openModal(template: TemplateRef<any>) {
@@ -32,7 +32,6 @@ export class ListUserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserList().subscribe(listUsers => {
       this.users = listUsers;
-      // console.log(listUsers)
     });
 
     this.authService;
@@ -43,13 +42,12 @@ export class ListUserComponent implements OnInit {
   }
 
   handleNewRoom(createRoom: NgForm) {
-    // console.log(createRoom.value);
-
     let roomName = createRoom.value.room_name;
 
     this.userService.handleNewRoom(roomName).subscribe(
       response => {
         console.log(response);
+        this.myListRoom.push(response);
       },
       error => console.log(error)
     );
@@ -65,7 +63,7 @@ export class ListUserComponent implements OnInit {
     );
   }
 
-  myChatRoom (roomId: number) {
-    this.routeNav.navigate(['/room', roomId])
+  myChatRoom(roomId: number) {
+    this.routeNav.navigate(["/room", roomId]);
   }
 }
