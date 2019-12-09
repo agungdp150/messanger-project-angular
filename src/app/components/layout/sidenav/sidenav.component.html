@@ -1,4 +1,7 @@
 <div class="scr-side">
+  <div style="text-align: center;" *ngIf="isLoading">
+    <app-loading></app-loading>
+  </div>
   <div *ngFor="let roomMember of memberRoom">
     <div class="user">
       <h4><i class="fas fa-circle"></i> {{roomMember.user.name}} </h4>

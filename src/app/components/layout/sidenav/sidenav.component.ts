@@ -9,6 +9,7 @@ import { RoomChatService } from "src/app/service/room-chat.service";
 })
 export class SidenavComponent implements OnInit {
   memberRoom = [];
+  isLoading : boolean = true;
 
   constructor(
     private routeActive: ActivatedRoute,
@@ -20,7 +21,7 @@ export class SidenavComponent implements OnInit {
       const id = params["id"];
       this.roomService.getMember(id).subscribe(allMember => {
         this.memberRoom = allMember;
-        // console.log(allMember);
+        this.isLoading = false;
       });
     });
   }

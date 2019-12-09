@@ -37,6 +37,7 @@ export class ListUserComponent implements OnInit {
     this.authService;
 
     this.userService.getRoomList().subscribe(myRoom => {
+      this.isLoading =false;
       this.myListRoom = myRoom;
     });
   }
