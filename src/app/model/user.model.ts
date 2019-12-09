@@ -5,7 +5,18 @@ export class User {
 }
 
 
-export class AddingUser {
-  room_id : number;
-  user_id : number;
+export class ListMessage {
+  id: number;
+  sender_id: number;
+  room_id: number;
+  sender : Sender;
+  content: string;
+}
+
+export class Sender {
+  id : number;
+  name : string;
+  email: string;
+  password: string;
+  profile_picture : string;
 }

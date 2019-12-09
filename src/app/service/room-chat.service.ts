@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
+import { ListMessage } from '../model/user.model';
+
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "application/json"
@@ -28,8 +30,8 @@ export class RoomChatService {
   }
 
   // Get Message
-  getMessage(roomId : number): Observable<any[]>{
-    return this.http.get<any[]>(
+  getMessage(roomId : number): Observable<ListMessage[]>{
+    return this.http.get<ListMessage[]>(
       `${this.myMessage}/${roomId}`,
       httpOptions
     )

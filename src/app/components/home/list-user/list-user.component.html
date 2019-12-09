@@ -106,6 +106,7 @@
                     placeholder="Room name" 
                     ngModel  
                     name="room_name"
+                    required
                     >
                     <!-- <div class="form-group my-3">
                       <label for="exampleSelect1">Choose Your Id</label>
@@ -114,18 +115,21 @@
                       id="exampleSelect1"
                       ngModel
                       name= "user_id"
+                      required
                       >
-                        <option value="1">Agung | ID: 1</option>
-                        <option value="2">Pro1 | ID: 2</option>
-                        <option value="3">Lynn | ID: 3</option>
-                        <option value="4">Odell | ID: 4</option>
-                        <option value="5">Godfrey | ID: 5</option>
+                      <option
+                      *ngFor="let user of users" 
+                      value="{{ user.id }}"
+                      >{{user.name}} | ID: {{ user.id }}
+                      </option>
                       </select>
                     </div> -->
                     <button 
                     type="submit" 
                     class="btn btn-primary btn-sm" 
-                    style="margin: 10px 0px;">
+                    style="margin: 10px 0px;"
+                    [disabled]="!form.valid"
+                    >
                     + Room
                     </button>
                   </form>

@@ -11,7 +11,9 @@ import { RoomChatService } from 'src/app/service/room-chat.service';
 })
 export class FormComponent implements OnInit {
 
-  messageText : any[];
+  messageText : any[] = []
+  room_id : number
+  content : string
 
   constructor(
     private routeActive: ActivatedRoute, 
@@ -20,29 +22,31 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   }
 
+
   sendText(message: NgForm ) {
 
-   let myRoom = this.routeActive.params.subscribe(params => {
+  
+  this.routeActive.params.subscribe(params => {
       let idRoom = params['id'];
-
-      return idRoom
+      this.room_id = parseInt(idRoom)
     }
   )
   
 
-  let room_id = message.value.room_id;
+  message.value.room_id = this.room_id
+  this.room_id = message.value.room_id
   let content = message.value.content;
 
-  console.log(content, room_id)
-  // this.handleSendMsg.handleSend(room_id, content).subscribe(
-  //   response => {
-  //     console.log(response)
-  //     this.messageText.push(response)
-  //   },
-  //   error => {
-  //     console.log(error)
-  //   }
-  // )
+
+  this.handleSendMsg.handleSend(this.room_id, content).subscribe(
+    response => {
+      console.log(response)
+      this.messageText.push(response)
+    },
+    error => {
+      console.log(error)
+    }
+  )
 
   
     message.reset();

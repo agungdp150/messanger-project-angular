@@ -14,6 +14,14 @@
       name="content"
       (keydown)="handleSend($event)"
       >
+      <input
+      type="number"
+      class="d-none"
+      ngModel 
+      value=""
+      name="room_id"
+      (keydown) = "handleSend($event)"
+      >
       <button 
       type="submit" 
       class="btn btn-primary btn-sm"
