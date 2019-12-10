@@ -4,27 +4,32 @@
       src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200"
       alt="background" class="width-image">
   </div>
-  <div class="pt-2 chat-overflow">
-    <div class="width-buble" *ngFor="let sending of sender">
-      <p *ngIf="(sender[0].sender_id === sender[0].sender.id)" class="bg-primary mx-2 p-3 chat-msg rounded text-white">
-        <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
-        </span><br>
+  <div #scrollDown class="pt-2 chat-overflow">
+    <div *ngFor="let sending of sender">
+
+
+      <p *ngIf="(myIdCheck !== sending.sender.id)" class="bg-primary mx-2 p-3 chat-msg rounded text-white width-buble">
+          <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
+          </span><br>
           {{sending.content}}
-        <br>
-        <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
-          {{jstoday}}
-        </span>
-      </p>
+          <br>
+          <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
+            {{jstoday}}
+          </span>
+        </p>
+
+        <p *ngIf="(myIdCheck === sending.sender.id)" class="bg-success mx-2 p-3 chat-msg rounded text-white width-buble-user">
+          <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
+          </span><br>
+          {{sending.content}}
+          <br>
+          <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
+            {{jstoday}}
+          </span>
+        </p>
+
+
+      
     </div>
-    <!-- <div class="width-buble-user" *ngFor="let mySend of sender">
-      <p *ngIf="(sender[0].sender_id === sender[0].sender.id)" class="bg-success mx-2 p-3 chat-msg rounded text-white"> 
-        <span style="font-weight: bold; font-size: 12px; font-style: italic;"> {{mySend.sender.name}} </span><br>
-         {{mySend.content}}
-        <br>
-        <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
-          12.33
-        </span>
-      </p>
-    </div> -->
   </div>
 </div>

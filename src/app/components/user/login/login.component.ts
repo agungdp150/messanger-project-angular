@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/service/auth.service";
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: "app-login",
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
   error: boolean = false;
+  decodeToken : any;
 
   constructor(
     private authService: AuthService,
@@ -33,8 +35,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.loginUsers(name, email, password).subscribe(
       response => {
-        console.log(response);
+        this.decodeToken = JSON.stringify(response);
+        const decoded = jwt_decode(this.decodeToken);
+        console.log(decoded);
         localStorage.setItem("token", response);
+        localStorage.setItem("id", decoded.user_id);
         this.routeNavigate.navigate(["/"]);
         this.isLoading = false;
       },

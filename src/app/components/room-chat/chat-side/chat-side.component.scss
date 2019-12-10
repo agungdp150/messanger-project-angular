@@ -14,27 +14,12 @@ div {
 
   .width-buble {
     padding: 5px;
-    display: flex;
-    justify-content: flex-start;
-    p{
-      font-size: 14px;
-    }
-    .chat-msg {
-      max-width: 480px;
-    }
+    max-width: 480px;
   }
   
   .width-buble-user {
     padding: 5px;
-    display: flex;
-    justify-content: flex-end;
-
-    p {
-      font-size: 14px;
-    }
-    .chat-msg {
-      max-width: 480px;
-    }
+    max-width: 480px;
   }
   
 }

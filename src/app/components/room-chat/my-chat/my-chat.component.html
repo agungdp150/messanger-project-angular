@@ -9,8 +9,9 @@
       <div class="col-8 no-gutters">
         <div>
           <app-chat-side 
-          [sender]="myMessageList" 
-          isLoading="isLoading"></app-chat-side>
+          [sender]="myMessageList"
+          isLoading="isLoading">
+        </app-chat-side>
         </div>
         <div>
           <app-form (myMessage)="myMessage($event)"></app-form>

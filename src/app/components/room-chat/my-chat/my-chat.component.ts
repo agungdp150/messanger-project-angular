@@ -21,6 +21,7 @@ export class MyChatComponent implements OnInit {
       let id = params["id"];
       this.myMessageService.getMessage(id).subscribe(allMessage => {
         this.myMessageList = allMessage;
+        console.log(this.myMessageList)
       });
     });
   }
@@ -30,6 +31,7 @@ export class MyChatComponent implements OnInit {
       response => {
         console.log(response);
         this.myMessageList.push(response);
+        
       },
       error => {
         console.log(error);
