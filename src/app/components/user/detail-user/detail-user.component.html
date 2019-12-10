@@ -4,12 +4,57 @@
   </div>
 
   <div class="container">
-    <div class="mt-4 d-flex justify-content-center">
-      <img
-        src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg"
+    <label class="d-flex justify-content-center" 
+    for="img-input" 
+    style="cursor: pointer;">
+      <div 
+      class="mt-4" 
+      *ngIf="!previewUrl && picture === ''">
+        
+      <img 
+        src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" 
         class="image--cover">
-    </div>
+      
+      </div>
+      
+      <div 
+      class="mt-4" 
+      *ngIf="previewUrl">
+
+        <img 
+        [src]="previewUrl" 
+        class="image--cover">
+
+      </div>
+
+      <div 
+      class="mt-4" 
+      *ngIf="picture !== '' && !previewUrl">
+
+        <img 
+        [src]="picture" 
+        class="image--cover">
+        
+      </div>
+    
+    </label>
+
     <h2 style="text-align: center;" class="py-3">{{ users.name }}</h2>
+
+    <div class="d-flex justify-content-center">
+      <div class="form-group" style="display: none;">
+        <input type="file" name="image" id='img-input' (change)="uploadImage($event)" />
+      </div>
+      <div class="form-group" *ngIf="users.id === myIdCheck">
+        <button 
+        class="btn btn-primary btn-sm" 
+        (click)="onSubmit()">
+        Change Picture
+      </button>
+      </div>
+    </div>
+
+
 
     <div class="table-width">
       <table class="table">
@@ -22,7 +67,7 @@
         <tbody>
           <tr>
             <td>Name</td>
-            <td (ngModelChange)="users.name" >{{ users.name }} </td>
+            <td (ngModelChange)="users.name">{{ users.name }} </td>
           </tr>
           <tr>
             <td>Email</td>

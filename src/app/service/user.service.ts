@@ -18,6 +18,7 @@ export class UserService {
   private myRoom = "/api/rooms";
   private addUser = "/api/members";
   private detailUser = "/api/users";
+  private uploadImage = "/api/userpict";
 
   constructor(private http: HttpClient) {}
 
@@ -52,5 +53,12 @@ export class UserService {
     return this.http.get<User[]>(
       `${this.detailUser}/${idUser}`, 
       httpOptions);
+  }
+
+  // handleUpload Image
+  myImage(file): Observable<any> {
+    return this.http.post<any>(
+      this.uploadImage, file
+    );
   }
 }

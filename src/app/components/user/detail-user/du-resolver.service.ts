@@ -8,7 +8,7 @@ import { User } from 'src/app/model/user.model';
 @Injectable({
   providedIn :'root'
 })
-export class DetaiUserResolverService implements Resolve<ListMessage[]>{
+export class DetaiUserResolverService implements Resolve<User[]>{
 
   private id : string;
 
