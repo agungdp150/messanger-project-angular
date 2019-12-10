@@ -4,11 +4,23 @@
       src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200"
       alt="background" class="width-image">
   </div>
-  <div #scrollDown class="pt-2 chat-overflow">
+  <div #scrollDown class="pt-2 px-4 chat-overflow">
     <div *ngFor="let sending of sender">
 
+      <div class="d-flex flex-row">
+      <p *ngIf="(myIdCheck !== sending.sender.id)" class="bg-primary mx-2 p-2 chat-msg rounded text-white width-buble">
+          <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
+          </span><br>
+          {{sending.content}}
+          <br>
+          <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
+            14.22
+          </span>
+        </p>
+      </div>
 
-      <p *ngIf="(myIdCheck !== sending.sender.id)" class="bg-primary mx-2 p-3 chat-msg rounded text-white width-buble">
+      <div class="d-flex flex-row-reverse">
+        <p *ngIf="(myIdCheck === sending.sender.id)" class="bg-success mx-2 p-2 chat-msg rounded text-white width-buble-user">
           <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
           </span><br>
           {{sending.content}}
@@ -17,16 +29,7 @@
             {{jstoday}}
           </span>
         </p>
-
-        <p *ngIf="(myIdCheck === sending.sender.id)" class="bg-success mx-2 p-3 chat-msg rounded text-white width-buble-user">
-          <span style="font-weight: bold; font-size: 12px; font-style: italic;">{{sending.sender.name}}
-          </span><br>
-          {{sending.content}}
-          <br>
-          <span class="d-flex justify-content-end" style="font-size: 12px; font-style: italic;">
-            {{jstoday}}
-          </span>
-        </p>
+      </div>
 
 
       

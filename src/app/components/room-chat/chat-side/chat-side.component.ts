@@ -14,11 +14,7 @@ export class ChatSideComponent implements OnInit {
   userId : string;
   myIdCheck : number;
 
-  today = new Date();
-  jstoday = "";
-
   constructor() {
-    this.jstoday = formatDate(this.today, "hh:mm a", "en-US", "+0530");
 
     this.userId = localStorage.getItem('id')
     this.myIdCheck = parseInt(this.userId);
