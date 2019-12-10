@@ -17,6 +17,7 @@ export class UserService {
   private userApi = "/api/users";
   private myRoom = "/api/rooms";
   private addUser = "/api/members";
+  private detailUser = "/api/users";
 
   constructor(private http: HttpClient) {}
 
@@ -31,15 +32,25 @@ export class UserService {
   }
 
   // New Room
-  handleNewRoom(room_name : string) : Observable<any>{
-    return this.http.post<any>(this.myRoom, {
-      room_name : room_name
-    }, httpOptions);
+  handleNewRoom(room_name: string): Observable<any> {
+    return this.http.post<any>(
+      this.myRoom,
+      {
+        room_name: room_name
+      },
+      httpOptions
+    );
   }
 
   // Add User
-  handleAddUser(addUser1) : Observable<any[]>{
+  handleAddUser(addUser1): Observable<any[]> {
     return this.http.post<any>(this.addUser, addUser1, httpOptions);
   }
 
+  // Detail User
+  getDetailUser(idUser: string): Observable<User[]> {
+    return this.http.get<User[]>(
+      `${this.detailUser}/${idUser}`, 
+      httpOptions);
+  }
 }

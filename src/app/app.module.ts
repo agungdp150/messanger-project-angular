@@ -21,6 +21,7 @@ import { ProtectNavGuard } from "./service/protect-nav.guard";
 import { UserService } from "./service/user.service";
 import { TokenInterceptorService } from "./service/token-interceptor.service";
 import { RoomResolverService } from "./components/room-chat/room-resolver.service";
+import { DetaiUserResolverService } from './components/user/detail-user/du-resolver.service';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -39,6 +40,7 @@ import { RoomResolverService } from "./components/room-chat/room-resolver.servic
     ProtectNavGuard,
     UserService,
     RoomResolverService,
+    DetaiUserResolverService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

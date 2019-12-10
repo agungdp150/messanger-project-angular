@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserComponent } from './user.component';
 import { FormsModule } from '@angular/forms';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     UserComponent,
     LoginComponent,
     SignUpComponent,
+    DetailUserComponent
   ],
   imports: [
     CommonModule,
