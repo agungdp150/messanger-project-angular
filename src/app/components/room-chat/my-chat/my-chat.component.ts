@@ -17,13 +17,16 @@ export class MyChatComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.routeActive.params.subscribe(params => {
-      let id = params["id"];
-      this.myMessageService.getMessage(id).subscribe(allMessage => {
-        this.myMessageList = allMessage;
-        console.log(this.myMessageList)
-      });
-    });
+    // this.routeActive.params.subscribe(params => {
+    //   let id = params["id"];
+    //   this.myMessageService.getMessage(id).subscribe(allMessage => {
+    //     this.myMessageList = allMessage;
+    //     console.log(this.myMessageList)
+    //   });
+    // });
+
+    this.myMessageList = this.routeActive.snapshot.data.myMessageList;
+    console.log(this.myMessageList)
   }
 
   myMessage(textSend: ListMessage) {

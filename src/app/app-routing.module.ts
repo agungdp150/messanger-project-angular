@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './shared/404';
 import { ProtectNavGuard } from './service/protect-nav.guard';
+import { RoomResolverService } from './components/room-chat/room-resolver.service';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {
     path : 'room/:id',
     loadChildren : './components/room-chat/room-chat.module#RoomChatModule',
-    canActivate : [ProtectNavGuard]
+    canActivate : [ProtectNavGuard],
+    resolve : {myMessageList : RoomResolverService}
   },
 
 

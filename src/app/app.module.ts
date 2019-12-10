@@ -19,7 +19,8 @@ import { NotFoundComponent } from "./shared/404";
 import { AuthService } from "./service/auth.service";
 import { ProtectNavGuard } from "./service/protect-nav.guard";
 import { UserService } from "./service/user.service";
-import { TokenInterceptorService } from './service/token-interceptor.service';
+import { TokenInterceptorService } from "./service/token-interceptor.service";
+import { RoomResolverService } from "./components/room-chat/room-resolver.service";
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -33,12 +34,17 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     RoomChatModule,
     HomeModule
   ],
-  providers: [AuthService, ProtectNavGuard, UserService, 
+  providers: [
+    AuthService,
+    ProtectNavGuard,
+    UserService,
+    RoomResolverService,
     {
-      provide : HTTP_INTERCEPTORS,
-      useClass : TokenInterceptorService,
-      multi : true
-    }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

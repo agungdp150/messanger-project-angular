@@ -30,7 +30,7 @@ export class RoomChatService {
   }
 
   // Get Message
-  getMessage(roomId : number): Observable<ListMessage[]>{
+  getMessage(roomId : string): Observable<ListMessage[]>{
     return this.http.get<ListMessage[]>(
       `${this.myMessage}/${roomId}`,
       httpOptions
