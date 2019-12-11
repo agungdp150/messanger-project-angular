@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { ListMessage } from "src/app/model/user.model";
-import { RoomChatService } from "src/app/service/room-chat.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ListMessage } from 'src/app/model/user.model';
+import { RoomChatService } from 'src/app/service/room-chat.service';
 
 @Component({
-  selector: "app-my-chat",
-  templateUrl: "./my-chat.component.html",
-  styleUrls: ["./my-chat.component.scss"]
+  selector: 'app-my-chat',
+  templateUrl: './my-chat.component.html',
+  styleUrls: ['./my-chat.component.scss']
 })
 export class MyChatComponent implements OnInit {
   myMessageList: ListMessage[];
@@ -26,7 +26,7 @@ export class MyChatComponent implements OnInit {
       response => {
         console.log(response);
         this.myMessageList.push(response);
-        
+
       },
       error => {
         console.log(error);

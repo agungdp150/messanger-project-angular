@@ -1,22 +1,21 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
-import { ListMessage } from "src/app/model/user.model";
-import { formatDate } from "@angular/common";
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { ListMessage } from 'src/app/model/user.model';
 
 @Component({
-  selector: "app-chat-side",
-  templateUrl: "./chat-side.component.html",
-  styleUrls: ["./chat-side.component.scss"]
+  selector: 'app-chat-side',
+  templateUrl: './chat-side.component.html',
+  styleUrls: ['./chat-side.component.scss']
 })
 export class ChatSideComponent implements OnInit {
   @Input() sender: ListMessage;
-  @ViewChild("scrollDown", {static : false}) private myScroll: ElementRef;
+  @ViewChild('scrollDown', {static : false}) private myScroll: ElementRef;
 
-  userId : string;
-  myIdCheck : number;
+  userId: string;
+  myIdCheck: number;
 
   constructor() {
 
-    this.userId = localStorage.getItem('id')
+    this.userId = localStorage.getItem('id');
     this.myIdCheck = parseInt(this.userId);
 
   }
@@ -32,6 +31,6 @@ export class ChatSideComponent implements OnInit {
   scrollToBottom(): void {
     try {
         this.myScroll.nativeElement.scrollTop = this.myScroll.nativeElement.scrollHeight;
-    } catch(err) { }                 
+    } catch (err) { }
 }
 }

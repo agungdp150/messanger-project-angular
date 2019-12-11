@@ -1,22 +1,22 @@
 export class User {
-  id : number;
-  name : string;
-  email : string;
+  id: number;
+  name: string;
+  email: string;
 }
 
 
 export class ListMessage {
   id: number;
-  sender_id: number;
-  room_id: number;
-  sender : Sender;
+  senderId: number;
+  roomId: number;
+  sender: Sender;
   content: string;
 }
 
 export class Sender {
-  id : number;
-  name : string;
+  id: number;
+  name: string;
   email: string;
   password: string;
-  profile_picture : string;
+  profilePicture: string;
 }

@@ -6,16 +6,13 @@ import { User } from 'src/app/model/user.model';
 
 
 @Injectable({
-  providedIn :'root'
+  providedIn : 'root'
 })
-export class DetaiUserResolverService implements Resolve<User[]>{
-
-  private id : string;
-
-  constructor(private detailUser : UserService) {}
+export class DetaiUserResolverService implements Resolve<User[]> {
+  private id: string;
+  constructor(private detailUser: UserService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Promise<User[]> | User[] {
     return this.detailUser.getDetailUser(route.paramMap.get('id'));
   }
-  
-}  
+}

@@ -1,24 +1,24 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { User } from "../model/user.model";
+import { User } from '../model/user.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "application/json"
+    'Content-Type': 'application/json'
   })
 };
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UserService {
-  private userApi = "/api/users";
-  private myRoom = "/api/rooms";
-  private addUser = "/api/members";
-  private detailUser = "/api/users";
-  private uploadImage = "/api/userpict";
+  private userApi = '/api/users';
+  private myRoom = '/api/rooms';
+  private addUser = '/api/members';
+  private detailUser = '/api/users';
+  private uploadImage = '/api/userpict';
 
   constructor(private http: HttpClient) {}
 
@@ -37,7 +37,7 @@ export class UserService {
     return this.http.post<any>(
       this.myRoom,
       {
-        room_name: room_name
+        room_name
       },
       httpOptions
     );
@@ -51,7 +51,7 @@ export class UserService {
   // Detail User
   getDetailUser(idUser: string): Observable<User[]> {
     return this.http.get<User[]>(
-      `${this.detailUser}/${idUser}`, 
+      `${this.detailUser}/${idUser}`,
       httpOptions);
   }
 
