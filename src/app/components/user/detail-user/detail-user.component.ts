@@ -57,7 +57,7 @@ onSubmit() {
     this.userService.myImage(formData).subscribe(
       response => {
         console.log(response);
-        alert('Success change image!');
+        alert('Success change profile image!');
       }
     );
   }

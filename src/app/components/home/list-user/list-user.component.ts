@@ -49,7 +49,7 @@ export class ListUserComponent implements OnInit {
       response => {
         console.log(response);
         this.myListRoom.push(response);
-        alert('Success create room!');
+        alert('Success create your room!');
       },
       error => console.log(error)
     );
@@ -60,7 +60,7 @@ export class ListUserComponent implements OnInit {
     this.userService.handleAddUser(this.addUserRoom).subscribe(
       response => {
         console.log(response);
-        alert('Success add user!');
+        alert('Success adding user!');
       },
       error => console.log(error)
     );
