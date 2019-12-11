@@ -16,6 +16,7 @@ export class DetailUserComponent implements OnInit {
   previewUrl: any = null;
   userID: string;
   myIdCheck: number;
+  pictures: string;
 
   constructor(
     private routeActive: ActivatedRoute,
@@ -24,7 +25,7 @@ export class DetailUserComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.routeActive.snapshot.data.users;
-    this.picture = this.routeActive.snapshot.data.users.profile_picture;
+    this.pictures = this.routeActive.snapshot.data.users.profile_picture;
     this.userID = localStorage.getItem('id');
     // tslint:disable-next-line: radix
     this.myIdCheck = parseInt(this.userID);
@@ -56,7 +57,7 @@ onSubmit() {
     this.userService.myImage(formData).subscribe(
       response => {
         console.log(response);
-        alert('success');
+        alert('Success change image!');
       }
     );
   }

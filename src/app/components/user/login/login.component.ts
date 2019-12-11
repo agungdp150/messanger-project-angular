@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       response => {
         this.decodeToken = JSON.stringify(response);
         const decoded = jwt_decode(this.decodeToken);
-        console.log(decoded);
+        // console.log(decoded);
         localStorage.setItem('token', response);
         localStorage.setItem('id', decoded.user_id);
         this.routeNavigate.navigate(['/']);
