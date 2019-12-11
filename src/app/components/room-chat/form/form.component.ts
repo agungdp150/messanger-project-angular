@@ -1,15 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-form",
-  templateUrl: "./form.component.html",
-  styleUrls: ["./form.component.scss"]
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
   @Output() myMessage: EventEmitter<any> = new EventEmitter();
 
+  // tslint:disable-next-line: variable-name
   room_id: number;
   content: string;
 
@@ -19,17 +20,18 @@ export class FormComponent implements OnInit {
 
   sendText(message: NgForm) {
     this.routeActive.params.subscribe(params => {
-      let idRoom = params["id"];
+      const idRoom = params.id;
+      // tslint:disable-next-line: radix
       this.room_id = parseInt(idRoom);
     });
 
     message.value.room_id = this.room_id;
     this.room_id = message.value.room_id;
-    let content = message.value.content;
+    const content = message.value.content;
 
-    let textSend = {
+    const textSend = {
       room_id: this.room_id,
-      content: content
+      content
     };
 
     this.myMessage.emit(textSend);
@@ -39,6 +41,7 @@ export class FormComponent implements OnInit {
 
   handleSendText(event) {
     if (event.keyCode === 13) {
+      // tslint:disable-next-line: no-unused-expression
       this.sendText;
     }
   }

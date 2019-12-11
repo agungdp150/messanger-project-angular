@@ -11,7 +11,8 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService
+    // tslint:disable-next-line: no-unused-expression
+    this.authService;
   }
 
 }

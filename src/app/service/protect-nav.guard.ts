@@ -10,12 +10,12 @@ export class ProtectNavGuard implements CanActivate {
 
   constructor(private authService: AuthService, private routeNavigate: Router) {}
 
-  canActivate ():boolean {
+  canActivate(): boolean {
     if (this.authService.handleProtectPage()) {
-      return true
+      return true;
     } else {
-      this.routeNavigate.navigate(['/user/login'])
-      return false
+      this.routeNavigate.navigate(['/user/login']);
+      return false;
     }
   }
 }

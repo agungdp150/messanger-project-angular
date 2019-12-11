@@ -1,15 +1,15 @@
-import { Component, OnInit, TemplateRef } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
-import { UserService } from "src/app/service/user.service";
-import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import { User } from "src/app/model/user.model";
-import { AuthService } from "src/app/service/auth.service";
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { User } from 'src/app/model/user.model';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: "app-list-user",
-  templateUrl: "./list-user.component.html",
-  styleUrls: ["./list-user.component.scss"]
+  selector: 'app-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent implements OnInit {
   users: User[];
@@ -34,15 +34,16 @@ export class ListUserComponent implements OnInit {
       this.users = listUsers;
     });
 
-    this.authService;
-
     this.userService.getRoomList().subscribe(myRoom => {
       this.myListRoom = myRoom;
     });
+
+    // tslint:disable-next-line: no-unused-expression
+    this.authService;
   }
 
   handleNewRoom(createRoom: NgForm) {
-    let roomName = createRoom.value.room_name;
+    const roomName = createRoom.value.room_name;
 
     this.userService.handleNewRoom(roomName).subscribe(
       response => {
@@ -64,6 +65,6 @@ export class ListUserComponent implements OnInit {
   }
 
   myChatRoom(roomId: number) {
-    this.routeNav.navigate(["/room", roomId]);
+    this.routeNav.navigate(['/room', roomId]);
   }
 }

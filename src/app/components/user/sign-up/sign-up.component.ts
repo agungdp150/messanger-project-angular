@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from '../../../service/auth.service';
 export class SignUpComponent implements OnInit {
 
   isLoading = false;
-  error : boolean = false;
+  error = false;
 
 
   constructor(
@@ -23,23 +23,23 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  signUpUsers(myForm : NgForm) {
+  signUpUsers(myForm: NgForm) {
     if (!myForm.valid) {
       return;
     }
 
     this.isLoading = true;
 
-    let name = myForm.value.name;
-    let email = myForm.value.email;
-    let password = myForm.value.password;
+    const name = myForm.value.name;
+    const email = myForm.value.email;
+    const password = myForm.value.password;
 
-    this.authService.signUpUSers(name, email, password)     
+    this.authService.signUpUSers(name, email, password)
     .subscribe(
       response => {
         console.log(response);
         this.isLoading = false;
-        this.routeNavigate.navigate(["/user/login"]);
+        this.routeNavigate.navigate(['/user/login']);
       },
       errorRes => {
         console.log(errorRes);
@@ -48,8 +48,8 @@ export class SignUpComponent implements OnInit {
       }
     );
     setTimeout(() => {
-      this.error = false
-    }, 2000)
+      this.error = false;
+    }, 2000);
     myForm.reset();
   }
 }
