@@ -9,20 +9,12 @@ import { User } from 'src/app/model/user.model';
   providedIn : 'root'
 })
 export class DetaiUserResolverService implements Resolve<User[]> {
-<<<<<<< HEAD
 
   private id: string;
 
-=======
-  private id: string;
->>>>>>> 4650e6139fd55c72cdf4731544ee901f15b74eeb
   constructor(private detailUser: UserService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Promise<User[]> | User[] {
     return this.detailUser.getDetailUser(route.paramMap.get('id'));
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> 4650e6139fd55c72cdf4731544ee901f15b74eeb
 }
