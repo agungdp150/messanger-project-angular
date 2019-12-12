@@ -45,8 +45,12 @@ export class UserService {
   }
 
   // Add User
-  handleAddUser(addUser1): Observable<any[]> {
-    return this.http.post<any>(this.addUser, addUser1, httpOptions);
+  // tslint:disable-next-line: variable-name
+  handleAddUser(room_id: number, user_id: number ): Observable<any[]> {
+    return this.http.post<any>(this.addUser, {
+      room_id,
+      user_id
+    }, httpOptions);
   }
 
   // Detail User

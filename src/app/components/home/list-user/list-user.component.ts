@@ -14,7 +14,8 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ListUserComponent implements OnInit {
   users: User[];
   myListRoom = [];
-  addUserRoom = {};
+  navigateRoom = false;
+  isLoading = true;
 
   modalRef: BsModalRef;
 
@@ -32,6 +33,7 @@ export class ListUserComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserList().subscribe(listUsers => {
       this.users = listUsers;
+      this.isLoading = false;
     });
 
     this.userService.getRoomList().subscribe(myRoom => {
@@ -47,7 +49,6 @@ export class ListUserComponent implements OnInit {
 
     this.userService.handleNewRoom(roomName).subscribe(
       response => {
-        console.log(response);
         this.myListRoom.push(response);
         alert('Success create your room!');
       },
@@ -56,8 +57,11 @@ export class ListUserComponent implements OnInit {
     createRoom.reset();
   }
 
-  handleAddUser() {
-    this.userService.handleAddUser(this.addUserRoom).subscribe(
+  handleAddUser(addUserRoom: NgForm ) {
+    const roomID = addUserRoom.value.room_id;
+    const userID = addUserRoom.value.user_id;
+    console.log(roomID, userID);
+    this.userService.handleAddUser(roomID, userID).subscribe(
       response => {
         console.log(response);
         alert('Success adding user!');
@@ -67,6 +71,7 @@ export class ListUserComponent implements OnInit {
   }
 
   myChatRoom(roomId: number) {
+    this.navigateRoom = true;
     this.routeNav.navigate(['/room', roomId]);
   }
 }

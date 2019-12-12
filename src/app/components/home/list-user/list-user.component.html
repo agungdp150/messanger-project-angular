@@ -17,12 +17,29 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
-                <input type="number" class="form-control mb-3" placeholder="Room id" [(ngModel)]="addUserRoom.room_id"
-                  name="room_id">
-                <input type="number" class="form-control my-3" placeholder="User id" [(ngModel)]="addUserRoom.user_id"
-                  name="user_id">
-                <button type="submit" class="btn btn-primary btn-sm my-3" (click)="handleAddUser()">
+              <form 
+              #form="ngForm" 
+              (ngSubmit)="handleAddUser(form)">
+                <input 
+                type="number" 
+                class="form-control mb-3" 
+                placeholder="Room id" 
+                ngModel
+                name="room_id"
+                required
+                >
+                <input 
+                type="number" 
+                class="form-control my-3" 
+                placeholder="User id" 
+                ngModel
+                name="user_id"
+                required
+                >
+                <button 
+                type="submit" 
+                class="btn btn-primary btn-sm my-3"
+                [disabled]="!form.valid" >
                   + User
                 </button>
               </form>
@@ -52,6 +69,12 @@
                 </tr>
               </tbody>
             </table>
+            <div *ngIf="isLoading" class="d-flex bd-highlight justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <p class="mx-3 mt-1">Please Wait...</p> 
+            </div>
           </div>
         </tab>
         <tab heading="Chat Room">
@@ -73,10 +96,22 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form #form="ngForm" (ngSubmit)="handleNewRoom(form)">
-                    <input type="text" class="form-control" placeholder="Room name" ngModel name="room_name" required>
-                    <button type="submit" class="btn btn-primary btn-sm" style="margin: 10px 0px;"
-                      [disabled]="!form.valid">
+                  <form 
+                  #form="ngForm" 
+                  (ngSubmit)="handleNewRoom(form)">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Room name" 
+                    ngModel 
+                    name="room_name" 
+                    required>
+                    <button 
+                    type="submit" 
+                    class="btn btn-primary btn-sm" 
+                    style="margin: 10px 0px;"
+                    [disabled]="!form.valid"
+                    >
                       + Room
                     </button>
                   </form>
@@ -88,26 +123,32 @@
             <hr class="py-1">
 
             <div class="container">
-              <div class="row">
+              <div *ngIf="navigateRoom" class="d-flex bd-highlight justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mx-3 mt-1">Please Wait...</p> 
+              </div>
+                <div class="row">
 
-                <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let room of myListRoom">
-                  <div class="box">
-                    <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-                      <div class="card-header">
-                        {{room.room_name}} | id: {{room.id}}
-                      </div>
-                      <div class="card-body">
-                        <h4 class="card-title">Create by Admin {{room.admin_id}}</h4>
-                        <div class="modal-footer">
-                          <button class="btn btn-secondary border btn-sm" (click)="myChatRoom(room.id)">Enter
-                            Room</button>
+                  <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let room of myListRoom">
+                    <div class="box">
+                      <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">
+                          {{room.room_name}} | id: {{room.id}}
+                        </div>
+                        <div class="card-body">
+                          <h4 class="card-title">Create by Admin {{room.admin_id}}</h4>
+                          <div class="modal-footer">
+                            <button class="btn btn-secondary border btn-sm" (click)="myChatRoom(room.id)">Enter
+                              Room</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-              </div>
+                </div>
             </div>
           </div>
         </tab>
