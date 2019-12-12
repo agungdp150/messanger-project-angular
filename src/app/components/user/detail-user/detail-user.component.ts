@@ -14,6 +14,7 @@ export class DetailUserComponent implements OnInit {
   picture: File = null;
   myPict: File = null;
   previewUrl: any = null;
+  error = false;
   userID: string;
   myIdCheck: number;
 
@@ -57,8 +58,14 @@ onSubmit() {
       response => {
         console.log(response);
         alert('Success change picture!');
+      }, error => {
+        console.log(error);
+        this.error = true;
       }
     );
+    setTimeout(() => {
+      this.error = false;
+    }, 3500);
   }
 }
 
