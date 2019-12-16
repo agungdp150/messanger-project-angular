@@ -1,8 +1,44 @@
-.my-custom-scrollbar {
-  position: relative;
-  height: 330px;
-  overflow: auto;
+.h-container {
+  color: #000;
+  max-width: 1125px;
+  margin: 0px auto;
+
+  .h-list {
+    color: #000;
+
+    /* Styles for tab labels */
+    .mat-tab-label {
+      color: rgb(0, 0, 0);
+      font-weight: 700;
+    }
+
+    /* Styles for the active tab label */
+    .mat-tab-label.mat-tab-label-active {
+      color: rgb(41, 52, 151);
+      font-weight: 700;
+    }
+
+    .mat-ink-bar {
+      background-color: green;
+    }
+
+
+    .h-tab1 {
+      max-width: 1125px;
+    }
+    
+    table {
+      width: 100%;
+    }
+
   }
-  .table-wrapper-scroll-y {
-  display: block;
-  }
+}
+
+// .my-custom-scrollbar {
+//   position: relative;
+//   height: 330px;
+//   overflow: auto;
+//   }
+//   .table-wrapper-scroll-y {
+//   display: block;
+//   }

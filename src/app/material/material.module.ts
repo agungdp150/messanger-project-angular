@@ -7,6 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+
 
 const Material = [
   MatButtonModule,
@@ -14,7 +17,9 @@ const Material = [
   MatIconModule,
   MatToolbarModule,
   MatInputModule,
-  MatCardModule
+  MatCardModule,
+  MatTabsModule,
+  MatTableModule
 ];
 
 

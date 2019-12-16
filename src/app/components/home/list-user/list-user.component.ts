@@ -1,20 +1,26 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
+import { MatTableDataSource } from '@angular/material';
+
 
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
-  styleUrls: ['./list-user.component.scss']
+  styleUrls: ['./list-user.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ListUserComponent implements OnInit {
   users: User[];
   myListRoom = [];
   navigateRoom = false;
   isLoading = true;
+
+  displayedColumns = ['no', 'name', 'email', 'userId', 'action'];
+  dataSource = new MatTableDataSource();
 
   constructor(
     private userService: UserService,
@@ -24,7 +30,7 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserList().subscribe(listUsers => {
-      this.users = listUsers;
+      this.dataSource.data = listUsers;
       this.isLoading = false;
     });
 
