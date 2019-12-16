@@ -1,1 +1,64 @@
 <app-navbar></app-navbar>
+
+<div class="lo-container">
+  <div class="lo-body">
+    <mat-card class="lo-card">
+      <mat-card-title>Login</mat-card-title>
+      <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading></app-loading>
+      </div>
+      <mat-card-content>
+        <form 
+        class="lo-form"
+        (ngSubmit)="loginUsers(form)" 
+        #form="ngForm"
+        *ngIf="!isLoading"
+        >
+          <mat-form-field class="lo-full-width">
+            <input 
+            matInput 
+            type="text" 
+            placeholder="Name"
+            ngModel 
+            name="name"
+            required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="lo-full-width">
+            <input 
+            matInput 
+            type="email" 
+            placeholder="Email"
+            ngModel 
+            name="email"
+            required
+            email
+            >
+          </mat-form-field>
+
+          <mat-form-field class="lo-full-width">
+            <input 
+            matInput 
+            type="password" 
+            placeholder="Password"
+            ngModel
+            name="password"
+            required
+            >
+          </mat-form-field>
+
+          <button 
+          mat-raised-button 
+          type="submit"
+          color="accent"
+          [disabled]="!form.valid"
+          >
+          Login
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Courier+Prime&display=swap');
-
 .container {
   background-color: #151965;
 
   .nav-width {
     max-width: 1125px;
-    margin: auto;
+    margin: 0px auto;
 
     .logo {
-      font-family: 'Courier Prime', monospace;
-      font-weight: 700;
-      font-style: italic;
+      img {
+        width: 140px;
+      }
     }
   }
 

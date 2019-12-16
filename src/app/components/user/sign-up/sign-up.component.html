@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+
+<div class="si-container">
+  <div class="si-body">
+    <mat-card class="si-card">
+      <mat-card-title>Sign Up</mat-card-title>
+      <div 
+      *ngIf="isLoading" 
+      style="text-align: center;">
+        <app-loading></app-loading>
+      </div>
+      <mat-card-content>
+
+        <form 
+        class="si-form"
+        #form="ngForm" 
+        (ngSubmit)="signUpUsers(form)"
+        *ngIf="!isLoading" 
+        >
+          <mat-form-field class="si-full-width">
+            <input 
+            matInput 
+            color="accent"
+            type="name" 
+            placeholder="Name"
+            ngModel
+            name="name"
+            required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="si-full-width">
+            <input 
+            matInput 
+            color="accent"
+            type="email" 
+            placeholder="Email"
+            ngModel
+            name="email"
+            required
+            email
+            >
+          </mat-form-field>
+
+          <mat-form-field class="si-full-width">
+            <input 
+            matInput 
+            color="accent"
+            type="password" 
+            placeholder="Password"
+            required
+            ngModel
+            name="password"
+            required
+            >
+          </mat-form-field>
+
+          <button 
+          mat-raised-button 
+          type="submit"
+          color="accent"
+          [disabled]="!form.valid"
+          >
+          Sign Up
+          </button>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

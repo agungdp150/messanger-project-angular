@@ -1,28 +1,61 @@
-.bg-color-1 {
-  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
-  height: 89vh
-}
-div {
-  margin: auto;
+.si-container {
+  height: 569px;
+  color: white;
 
-  h3 {
-    font-weight: 800;
-  }
-  .center-form {  
-    padding-top: 60px;
+  @media only screen and (min-height : 768px) {
+    height: 704px;
   }
 
-  form {
-    .space-form {
-      margin : 15px 0px;
+  .si-body {
+    max-width: 1125px;
+    margin: 0px auto;
+    padding-top: 70px;
 
-      label {
-        font-size: 14px;
+    @media only screen and (min-height : 768px) {
+      padding-top: 150px;
+    }
+
+    .si-card {
+      margin: 0px auto;
+      max-width: 400px;
+      padding: 30px;
+      background-color: #151965;
+
+      mat-card-title {
+        text-align: center;
+      }
+
+      .si-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+        margin-top: 10px;
+
+        ::ng-deep .mat-focused .mat-form-field-label {
+          color: rgb(255, 255, 255) !important;
+         }
+        
+         ::ng-deep.mat-form-field-underline {
+          background-color: rgb(255, 255, 255) !important;
+        } 
+        
+        ::ng-deep.mat-form-field-ripple {
+         background-color: rgb(255, 255, 255) !important;;
+        }
       }
       
-      input.ng-invalid.ng-touched {
-        border : 1px solid red;
+      .si-full-width {
+        width: 100%;
+        margin: 10px 0px;
       }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        background-color: #46B5D1;
+        color: white;
+      }
+
     }
   }
 }

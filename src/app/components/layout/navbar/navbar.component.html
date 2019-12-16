@@ -1,16 +1,27 @@
 <mat-toolbar class="container">
   <mat-toolbar-row class="nav-width">
 
-    <a class="logo" routerLink="/">My Chat</a>
+    <a class="logo" routerLink="/"><img src="../../../../assets/Logo1.png" ></a>
     <span class="nav-spacer"></span>
-    <a class="nav-space" style="font-size: 14px;" routerLink="/user/login" >Login</a>
-    <a class="nav-space" style="font-size: 14px;" routerLink="/user/signup">Sign Up</a>
     <a 
     class="nav-space" 
-    style="font-size: 14px; cursor: pointer;" 
-    *ngIf="authService.handleProtectPage()" 
+    style="font-size: 14px;" 
+    *ngIf="!authService.handleProtectPage()" 
+    routerLink="/user/login">
+    Login
+    </a>
+    <a 
+    class="nav-space" 
+    style="font-size: 14px;" 
+    *ngIf="!authService.handleProtectPage()" 
+    routerLink="/user/signup">
+    Sign Up
+    </a>
+    <a 
+    class="nav-space" 
+    style="font-size: 14px; cursor: pointer;" *ngIf="authService.handleProtectPage()"
     (click)="authService.handleLogout()">
-    Logout
+      Logout
     </a>
 
   </mat-toolbar-row>

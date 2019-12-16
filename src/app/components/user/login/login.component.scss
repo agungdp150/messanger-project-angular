@@ -1,30 +1,62 @@
-.bg-color-1 {
-  background-color: #222222;
-  height: 568px;
+.lo-container {
+  background-color: #32407B;
+  height: 569px;
+  color: white;
 
-  div {
-    margin: auto;
+  @media only screen and (min-height : 768px) {
+    height: 704px;
+  }
 
-    h3 {
-      font-weight: 800;
+  .lo-body {
+    max-width: 1125px;
+    margin: 0px auto;
+    padding-top: 70px;
+
+    @media only screen and (min-height : 768px) {
+      padding-top: 150px;
     }
 
-    .center-form {
-      padding-top: 60px;
-    }
+    .lo-card {
+      margin: 0px auto;
+      max-width: 400px;
+      padding: 30px;
+      background-color: #151965;
 
-    form {
-      .space-form {
-        margin: 20px 0px;
+      mat-card-title {
+        text-align: center;
+      }
 
-        label {
-          font-size: 14px;
-        }
+      .lo-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+        margin-top: 10px;
 
-        input.ng-invalid.ng-touched {
-          border : 1px solid red;
+        ::ng-deep .mat-focused .mat-form-field-label {
+          color: rgb(255, 255, 255) !important;
+         }
+        
+         ::ng-deep.mat-form-field-underline {
+          background-color: rgb(255, 255, 255) !important;
+        } 
+        
+        ::ng-deep.mat-form-field-ripple {
+         background-color: rgb(255, 255, 255) !important;;
         }
       }
+      
+      .lo-full-width {
+        width: 100%;
+        margin: 10px 0px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        background-color: #46B5D1;
+        color: white;
+      }
+
     }
   }
 }
