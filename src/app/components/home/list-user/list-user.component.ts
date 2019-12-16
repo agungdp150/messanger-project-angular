@@ -2,7 +2,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -17,18 +16,11 @@ export class ListUserComponent implements OnInit {
   navigateRoom = false;
   isLoading = true;
 
-  modalRef: BsModalRef;
-
   constructor(
     private userService: UserService,
-    private modalService: BsModalService,
     private authService: AuthService,
     private routeNav: Router
   ) {}
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
   ngOnInit() {
     this.userService.getUserList().subscribe(listUsers => {
@@ -36,9 +28,9 @@ export class ListUserComponent implements OnInit {
       this.isLoading = false;
     });
 
-    this.userService.getRoomList().subscribe(myRoom => {
-      this.myListRoom = myRoom;
-    });
+    // this.userService.getRoomList().subscribe(myRoom => {
+    //   this.myListRoom = myRoom;
+    // });
 
     // tslint:disable-next-line: no-unused-expression
     this.authService;

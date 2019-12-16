@@ -22,6 +22,7 @@ import { UserService } from './service/user.service';
 import { TokenInterceptorService } from './service/token-interceptor.service';
 import { RoomResolverService } from './components/room-chat/room-resolver.service';
 import { DetaiUserResolverService } from './components/user/detail-user/du-resolver.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -33,7 +34,8 @@ import { DetaiUserResolverService } from './components/user/detail-user/du-resol
     UserModule,
     SharedModule,
     RoomChatModule,
-    HomeModule
+    HomeModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

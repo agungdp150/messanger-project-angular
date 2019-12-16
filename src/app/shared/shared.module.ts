@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { NavbarComponent } from '../components/layout/navbar/navbar.component';
 import { SidenavComponent } from '../components/layout/sidenav/sidenav.component';
-import { BootsrapModule } from '../bootsrap/bootsrap.module';
 import { LoadingComponent } from './loading/loading.component';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -21,7 +21,7 @@ import { LoadingComponent } from './loading/loading.component';
     CommonModule,
     FormsModule,
     RouterModule,
-    BootsrapModule,
+    MaterialModule
   ],
   exports : [
     FormsModule,
@@ -30,7 +30,7 @@ import { LoadingComponent } from './loading/loading.component';
     NavbarComponent,
     LoadingComponent,
     SidenavComponent,
-    BootsrapModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

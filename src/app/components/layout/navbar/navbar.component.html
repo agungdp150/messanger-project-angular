@@ -1,15 +1,17 @@
-<div>
-  <nav class="navbar navbar-light">
-    <div class="container">  
-      <a class="navbar-brand text-light my-logo" routerLink="/">MY Chat</a>
-      <div class="my-nav">
-        <ul>
-          <li><a class="text-light" *ngIf="!authService.handleProtectPage()" routerLink="/user/login">Login</a></li>
-          <li><a class="text-light" *ngIf="!authService.handleProtectPage()" routerLink="/user/signup">Sign Up</a></li>
-          <li><a class="text-light" style="cursor: pointer;" *ngIf="authService.handleProtectPage()" (click)="authService.handleLogout()">Log Out</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
+<mat-toolbar class="container">
+  <mat-toolbar-row class="nav-width">
+
+    <a class="logo" routerLink="/">My Chat</a>
+    <span class="nav-spacer"></span>
+    <a class="nav-space" style="font-size: 14px;" routerLink="/user/login" >Login</a>
+    <a class="nav-space" style="font-size: 14px;" routerLink="/user/signup">Sign Up</a>
+    <a 
+    class="nav-space" 
+    style="font-size: 14px; cursor: pointer;" 
+    *ngIf="authService.handleProtectPage()" 
+    (click)="authService.handleLogout()">
+    Logout
+    </a>
+
+  </mat-toolbar-row>
+</mat-toolbar>
