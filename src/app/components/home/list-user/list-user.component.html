@@ -34,7 +34,7 @@
 
           <ng-container matColumnDef="action" >
             <mat-header-cell *matHeaderCellDef >Action</mat-header-cell>
-            <mat-cell *matCellDef="let element"> <button mat-icon-button><mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon></button> </mat-cell>
+            <mat-cell *matCellDef="let element"> <button mat-icon-button (click)="detailUser(element.id)"><mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon></button> </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

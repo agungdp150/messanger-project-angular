@@ -17,6 +17,7 @@ export class ListUserComponent implements OnInit {
   users: User[];
   myListRoom = [];
   navigateRoom = false;
+  navigateUser = false;
   isLoading = true;
 
   displayedColumns = ['no', 'name', 'email', 'userId', 'action'];
@@ -73,5 +74,10 @@ export class ListUserComponent implements OnInit {
   myChatRoom(roomId: number) {
     this.navigateRoom = true;
     this.routeNav.navigate(['/room', roomId]);
+  }
+
+  detailUser(userID: number) {
+    this.navigateUser = true;
+    this.routeNav.navigate(['/user/user-detail', userID]);
   }
 }

@@ -45,7 +45,8 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0px auto;
-
+    overflow: auto;
+    height: 360px;
     .h-room {
       max-width: 400px;
       margin: 10px;

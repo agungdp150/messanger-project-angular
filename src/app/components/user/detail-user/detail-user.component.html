@@ -1,0 +1,88 @@
+<div>
+  <app-navbar></app-navbar>
+
+  <div class="container">
+    <div class="center-image">
+    <label
+    for="img-input" 
+    style="cursor: pointer;">
+      <div 
+      class="top-4" 
+      *ngIf="!previewUrl && picture === ''">
+        
+      <img 
+        src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" 
+        class="image--cover">
+      </div>
+      
+      <div 
+      class="top-4" 
+      *ngIf="previewUrl">
+
+        <img 
+        [src]="previewUrl" 
+        class="image--cover">
+
+      </div>
+
+      <div expression
+      class="top-4" 
+      *ngIf="picture !== '' && !previewUrl">
+
+        <img 
+        [src]="picture" 
+        class="image--cover">
+        
+      </div>
+    
+    </label>
+    </div>
+
+    <h2 style="text-align: center; margin: 0.6em 0em;">{{ users.name }}</h2>
+
+    <div class="center-image">
+      <div style="display: none;">
+        <input 
+        type="file" 
+        name="image" 
+        id='img-input' 
+        (change)="uploadImage($event)" />
+      </div>
+      <div 
+      *ngIf="users.id === myIdCheck">
+        <button 
+        mat-raised-button
+        (click)="onSubmit()">
+        Change Picture
+      </button>
+      </div>
+    </div>
+    
+    <div class="alert alert-dismissible alert-danger w-50 text-center mx-auto" *ngIf="error">
+      <strong>Something went wrong</strong> choose your image.
+    </div>
+
+
+
+    <div class="table-width">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User Data</th>
+            <th>Biodata</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td (ngModelChange)="users.name">{{ users.name }} </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ users.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
