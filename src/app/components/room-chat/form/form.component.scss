@@ -7,8 +7,12 @@ div {
       top: 528px;
       width: 100%;
       input {
-        width: 96%;
+        width: 94%;
         border-radius: 0px;
+        height: 27px;
+        font-size: 16px;
+        padding: 5px;
+        outline: none;
       }
 
       button {
@@ -16,5 +20,9 @@ div {
         border-radius: 0px;
       }
     }
+  }
+
+  .d-none {
+    display: none;
   }
 }

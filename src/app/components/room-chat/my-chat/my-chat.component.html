@@ -12,9 +12,14 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div>
-        <app-chat-side></app-chat-side>
+        <app-chat-side
+        [sender]="myMessageList"
+        ></app-chat-side
+          >
       </div>
-      
+      <div>
+        <app-form (myMessage)="myMessage($event)"></app-form>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
