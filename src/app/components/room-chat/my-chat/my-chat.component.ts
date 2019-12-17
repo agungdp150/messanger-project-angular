@@ -10,6 +10,8 @@ import { RoomChatService } from 'src/app/service/room-chat.service';
 })
 export class MyChatComponent implements OnInit {
   myMessageList: ListMessage[];
+  isLoading = true;
+  memberRoom = [];
 
   constructor(
     private routeActive: ActivatedRoute,
@@ -19,6 +21,14 @@ export class MyChatComponent implements OnInit {
   ngOnInit() {
 
     this.myMessageList = this.routeActive.snapshot.data.myMessageList;
+
+    this.routeActive.params.subscribe(params => {
+      const id = params.id;
+      this.myMessageService.getMember(id).subscribe(allMember => {
+        this.memberRoom = allMember;
+        this.isLoading = false;
+      });
+    });
   }
 
   myMessage(textSend: ListMessage) {

@@ -34,9 +34,11 @@ export class ListUserComponent implements OnInit {
       this.isLoading = false;
     });
 
-    // this.userService.getRoomList().subscribe(myRoom => {
-    //   this.myListRoom = myRoom;
-    // });
+    this.userService.getRoomList().subscribe(myRoom => {
+      this.myListRoom = myRoom;
+
+      console.log(this.myListRoom);
+    });
 
     // tslint:disable-next-line: no-unused-expression
     this.authService;

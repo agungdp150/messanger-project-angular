@@ -2,7 +2,13 @@
   <mat-tab-group class="h-list">
     <mat-tab label="First" class="h-tab1">
 
-      <div>
+      <h1 style="margin: 10px 0px;">List User</h1>
+
+      <button mat-raised-button style="margin: 5px 0px 20px">
+        Add User <mat-icon>person_add</mat-icon>
+      </button>
+
+      <div class="h-list-container mat-elevation-z8">
 
         <mat-table [dataSource]="dataSource">
 
@@ -28,7 +34,7 @@
 
           <ng-container matColumnDef="action" >
             <mat-header-cell *matHeaderCellDef >Action</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            <mat-cell *matCellDef="let element"> <button mat-icon-button><mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon></button> </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -41,8 +47,36 @@
       </div>
 
     </mat-tab>
-    <mat-tab label="Second">
-      Content 2
+    <mat-tab label="Second" class="h-tab2">
+      
+      <h1 style="margin: 10px 0px;">List Room</h1>
+
+      <button mat-raised-button style="margin: 5px 0px 20px">
+        Create Room <mat-icon>add</mat-icon>
+      </button>
+
+      <div class="h-room-container">
+
+      <div class="h-room" *ngFor="let room of myListRoom">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{room.room_name}}</mat-card-title>
+            <mat-card-subtitle>Room id: {{room.id}}</mat-card-subtitle>
+          </mat-card-header>
+          <hr>
+          <mat-card-content>
+            <p style="text-align: center;">
+              Create by admin: {{room.admin_id}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions style="display: flex; justify-content: flex-end;">
+            <button mat-button (click)="myChatRoom(room.id)">Enter Room</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+    </div>
+
     </mat-tab>
   </mat-tab-group>
 </div>

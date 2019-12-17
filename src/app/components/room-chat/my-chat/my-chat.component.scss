@@ -1,5 +1,22 @@
-.col,
- [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
+.r-chat-container {
+  height: 569px;
+
+  .chat-side {
+    width: 30%;
+    padding: 1em;
   }
+
+  .user {
+    padding: 5px;
+    margin: 10px 0px;
+    border-radius: 3px;
+    p {
+      font-size: 16px;
+      margin: 0px;
+      i {
+        font-size: 10px;
+        color: chartreuse;
+      }
+    }
+  }
+}
