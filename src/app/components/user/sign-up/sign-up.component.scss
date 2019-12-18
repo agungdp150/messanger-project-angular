@@ -58,4 +58,15 @@
 
     }
   }
+
+  .alert {
+    text-align: center;
+    background: rgb(236, 125, 125);
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px auto;
+    color: rgb(131, 13, 13);
+    border-radius: 4px;
+    font-size: 14px;
+  }
 }

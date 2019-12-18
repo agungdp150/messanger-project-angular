@@ -49,7 +49,7 @@ export class SignUpComponent implements OnInit {
     );
     setTimeout(() => {
       this.error = false;
-    }, 2000);
+    }, 3000);
     myForm.reset();
   }
 }

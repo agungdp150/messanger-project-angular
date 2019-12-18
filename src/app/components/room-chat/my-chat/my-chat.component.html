@@ -4,6 +4,9 @@
 <div>
   <mat-sidenav-container class="r-chat-container">
     <mat-sidenav class="chat-side" mode="side" opened>
+      <div style="text-align: center;" *ngIf="isLoading">
+        <app-loading></app-loading>
+      </div>
       <div *ngFor="let roomMember of memberRoom">
         <div class="user">
           <p><i class="fas fa-circle"></i> {{roomMember.user.name}} </p>

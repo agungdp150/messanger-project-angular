@@ -4,6 +4,9 @@
   <div class="si-body">
     <mat-card class="si-card">
       <mat-card-title>Sign Up</mat-card-title>
+      <div class="alert" *ngIf="error">
+        <strong>Something went wrong</strong>, please fill the form!!
+      </div>
       <div 
       *ngIf="isLoading" 
       style="text-align: center;">

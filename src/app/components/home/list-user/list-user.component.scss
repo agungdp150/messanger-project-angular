@@ -41,6 +41,11 @@
     max-width: 1125px;
   }
 
+  .spinner {
+    display: flex;
+    justify-content: center;
+  }
+
   .h-room-container {
     display: flex;
     flex-wrap: wrap;

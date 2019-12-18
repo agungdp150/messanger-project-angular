@@ -4,11 +4,7 @@
 
       <h1 style="margin: 10px 0px;">List User</h1>
 
-      <button 
-      mat-raised-button 
-      style="margin: 5px 0px 20px"
-      (click)="openDialog()"
-      >
+      <button mat-raised-button style="margin: 5px 0px 20px" (click)="openDialog()">
         Add User <mat-icon>person_add</mat-icon>
       </button>
 
@@ -16,29 +12,31 @@
 
         <mat-table [dataSource]="dataSource">
 
-          <ng-container matColumnDef="no" >
-            <mat-header-cell *matHeaderCellDef >No</mat-header-cell>
+          <ng-container matColumnDef="no">
+            <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
             <mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="name" >
-            <mat-header-cell *matHeaderCellDef >Name</mat-header-cell>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="email" >
-            <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="userId" >
-            <mat-header-cell *matHeaderCellDef >User ID</mat-header-cell>
+          <ng-container matColumnDef="userId">
+            <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="action" >
-            <mat-header-cell *matHeaderCellDef >Action</mat-header-cell>
-            <mat-cell *matCellDef="let element"> <button mat-icon-button (click)="detailUser(element.id)"><mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon></button> </mat-cell>
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+            <mat-cell *matCellDef="let element"> <button mat-icon-button (click)="detailUser(element.id)">
+                <mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon>
+              </button> </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -46,44 +44,49 @@
 
         </mat-table>
 
+        <div class="spinner" *ngIf="isLoading">
+          <mat-spinner diameter="30"></mat-spinner>
+          <p style="margin: 5px 0px 0px 20px;">Please Wait...</p>
+        </div>
 
 
       </div>
 
     </mat-tab>
     <mat-tab label="Room" class="h-tab2">
-      
+
+      <h1 *ngIf="!authService.handleProtectPage()" style="text-align: center; font-weight: 400;">Please Login...</h1>
+      <div *ngIf="authService.handleProtectPage()">
       <h1 style="margin: 10px 0px;">List Room</h1>
 
-      <button 
-      mat-raised-button 
-      (click)="openCreateRoom()"
-      style="margin: 5px 0px 20px">
+      <button mat-raised-button (click)="openCreateRoom()" style="margin: 5px 0px 20px">
         Create Room <mat-icon>add</mat-icon>
       </button>
-
-      <div class="h-room-container">
-
-      <div class="h-room" *ngFor="let room of myListRoom">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>{{room.room_name}}</mat-card-title>
-            <mat-card-subtitle>Room id: {{room.id}}</mat-card-subtitle>
-          </mat-card-header>
-          <hr>
-          <mat-card-content>
-            <p style="text-align: center;">
-              Create by admin: {{room.admin_id}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions style="display: flex; justify-content: flex-end;">
-            <button mat-button (click)="myChatRoom(room.id)">Enter Room</button>
-          </mat-card-actions>
-        </mat-card>
+      <div class="spinner" *ngIf="navigateRoom">
+        <mat-spinner diameter="30"></mat-spinner>
+        <p style="margin: 5px 0px 0px 20px;">Please Wait...</p>
       </div>
+      <div class="h-room-container">
+        <div class="h-room" *ngFor="let room of myListRoom">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{room.room_name}}</mat-card-title>
+              <mat-card-subtitle>Room id: {{room.id}}</mat-card-subtitle>
+            </mat-card-header>
+            <hr>
+            <mat-card-content>
+              <p style="text-align: center;">
+                Create by admin: {{room.admin_id}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions style="display: flex; justify-content: flex-end;">
+              <button mat-button (click)="myChatRoom(room.id)">Enter Room</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
 
+      </div>
     </div>
-
     </mat-tab>
   </mat-tab-group>
 </div>

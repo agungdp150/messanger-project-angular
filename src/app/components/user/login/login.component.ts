@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     );
     setTimeout(() => {
       this.error = false;
-    }, 2000);
+    }, 3000);
 
     myLogin.reset();
   }
