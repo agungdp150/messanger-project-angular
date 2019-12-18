@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { NavbarComponent } from '../components/layout/navbar/navbar.component';
-import { SidenavComponent } from '../components/layout/sidenav/sidenav.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MaterialModule } from '../material/material.module';
 
@@ -14,7 +13,6 @@ import { MaterialModule } from '../material/material.module';
   declarations: [
     AlertComponent,
     NavbarComponent,
-    SidenavComponent,
     LoadingComponent
   ],
   imports: [
@@ -29,7 +27,6 @@ import { MaterialModule } from '../material/material.module';
     AlertComponent,
     NavbarComponent,
     LoadingComponent,
-    SidenavComponent,
     MaterialModule
   ]
 })
