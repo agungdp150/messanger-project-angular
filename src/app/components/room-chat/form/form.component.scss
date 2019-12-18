@@ -6,6 +6,9 @@ div {
       z-index: 10;
       top: 528px;
       width: 100%;
+      @media screen and (min-height:768px) {
+        top: 661px;
+    }
       input {
         width: 94%;
         border-radius: 0px;

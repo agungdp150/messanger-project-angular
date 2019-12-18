@@ -1,6 +1,11 @@
 .r-chat-container {
   height: 569px;
 
+  @media screen and (min-height:768px) {
+      height: 704px;
+  }
+
+
   .chat-side {
     width: 30%;
     padding: 1em;
