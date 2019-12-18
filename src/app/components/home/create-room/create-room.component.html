@@ -1,0 +1,44 @@
+<div class="container">
+  <h1 mat-dialog-title>Add user to room</h1>
+  <hr>
+  <form
+  #form="ngForm" 
+  (ngSubmit)="handleNewRoom(form)"
+  >
+    <div mat-dialog-content>
+      <p>Please choosee ID user and room</p>
+      <div>
+        <mat-form-field class="form-add">
+          <input 
+          matInput 
+          type="text" 
+          placeholder="Room name" 
+          ngModel 
+          name="room_name" 
+          required
+          >
+        </mat-form-field><br>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button 
+      mat-button 
+      mat-dialog-close
+      >
+      No Thanks
+    </button>
+      <button 
+      mat-button 
+      type="submit" 
+      mat-dialog-close
+      style="margin: 10px 0px;"
+      [disabled]="!form.valid"
+      (click)="refresh()"
+      >
+      Add +
+    </button>
+    </div>
+  </form
+  >
+</div>
+

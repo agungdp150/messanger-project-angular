@@ -4,7 +4,11 @@
 
       <h1 style="margin: 10px 0px;">List User</h1>
 
-      <button mat-raised-button style="margin: 5px 0px 20px">
+      <button 
+      mat-raised-button 
+      style="margin: 5px 0px 20px"
+      (click)="openDialog()"
+      >
         Add User <mat-icon>person_add</mat-icon>
       </button>
 
@@ -51,7 +55,10 @@
       
       <h1 style="margin: 10px 0px;">List Room</h1>
 
-      <button mat-raised-button style="margin: 5px 0px 20px">
+      <button 
+      mat-raised-button 
+      (click)="openCreateRoom()"
+      style="margin: 5px 0px 20px">
         Create Room <mat-icon>add</mat-icon>
       </button>
 

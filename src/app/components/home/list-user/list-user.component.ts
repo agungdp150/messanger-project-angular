@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { UserAddComponent } from '../user-add/user-add.component';
+import { CreateRoomComponent } from '../create-room/create-room.component';
+
 
 
 @Component({
@@ -26,7 +29,8 @@ export class ListUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private routeNav: Router
+    private routeNav: Router,
+    public dialogPopup: MatDialog
   ) {}
 
   ngOnInit() {
@@ -45,32 +49,6 @@ export class ListUserComponent implements OnInit {
     this.authService;
   }
 
-  handleNewRoom(createRoom: NgForm) {
-    const roomName = createRoom.value.room_name;
-
-    this.userService.handleNewRoom(roomName).subscribe(
-      response => {
-        this.myListRoom.push(response);
-        alert('Success create your room!');
-      },
-      error => console.log(error)
-    );
-    createRoom.reset();
-  }
-
-  handleAddUser(addUserRoom: NgForm ) {
-    const roomID = addUserRoom.value.room_id;
-    const userID = addUserRoom.value.user_id;
-    console.log(roomID, userID);
-    this.userService.handleAddUser(roomID, userID).subscribe(
-      response => {
-        console.log(response);
-        alert('Success adding user!');
-      },
-      error => console.log(error)
-    );
-  }
-
   myChatRoom(roomId: number) {
     this.navigateRoom = true;
     this.routeNav.navigate(['/room', roomId]);
@@ -80,4 +58,12 @@ export class ListUserComponent implements OnInit {
     this.navigateUser = true;
     this.routeNav.navigate(['/user/user-detail', userID]);
   }
+
+  openDialog(): void  {
+     this.dialogPopup.open(UserAddComponent);
+  }
+
+  openCreateRoom(): void  {
+    this.dialogPopup.open(CreateRoomComponent);
+ }
 }
