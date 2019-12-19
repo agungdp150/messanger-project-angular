@@ -1,24 +1,49 @@
 <div>
-  <app-navbar></app-navbar>
-</div>
-<div>
-  <mat-sidenav-container class="r-chat-container">
-    <mat-sidenav class="chat-side" mode="side" opened>
-      <div style="text-align: center;" *ngIf="isLoading">
-        <app-loading></app-loading>
-      </div>
-      <div *ngFor="let roomMember of memberRoom">
-        <div class="user">
-          <p><i class="fas fa-circle"></i> {{roomMember.user.name}} </p>
+  <mat-toolbar id="mainToolbar" color="primary">
+    <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">
+      subject
+    </mat-icon>
+    <a routerLink="/" class="logo">
+      <img src="../../../../assets/Logo1.png" alt="Logo">
+    </a>
+    <span class="toolbar-spacer"></span>
+    <a class="nav-space" style="font-size: 14px;" *ngIf="!authService.handleProtectPage()" routerLink="/user/login">
+      Login
+    </a>
+    <a class="nav-space" style="font-size: 14px;" *ngIf="!authService.handleProtectPage()" routerLink="/user/signup">
+      Sign Up
+    </a>
+    <a class="nav-space" style="font-size: 14px; cursor: pointer;" *ngIf="authService.handleProtectPage()"
+      (click)="authService.handleLogout()">
+      Logout
+    </a>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container id="sidenavContainer" fullscreen>
+    <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen"
+      opened>
+
+      <mat-list id="menus" style="overflow-x: hidden;">
+
+        <div *ngFor="let roomMember of memberRoom">
+          <div class="profile" *ngIf="roomMember.user.profile_picture !== ''">
+            <img src={{roomMember.user.profile_picture}} alt="Profile">
+            <h4>{{roomMember.user.name}}</h4>
+          </div>
+
+          <div class="profile" *ngIf="roomMember.user.profile_picture === ''">
+            <img src="http://i.pravatar.cc/300" alt="Profile">
+            <h4>{{roomMember.user.name}}</h4>
+          </div>
         </div>
-      </div>
+
+      </mat-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+
+    <mat-sidenav-content [ngStyle]="{'margin-left.px': contentMargin}">
       <div>
-        <app-chat-side
-        [sender]="myMessageList"
-        ></app-chat-side
-          >
+        <app-chat-side [sender]="myMessageList"></app-chat-side>
       </div>
       <div>
         <app-form (myMessage)="myMessage($event)"></app-form>

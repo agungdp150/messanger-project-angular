@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListMessage } from 'src/app/model/user.model';
 import { RoomChatService } from 'src/app/service/room-chat.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-my-chat',
@@ -12,10 +13,13 @@ export class MyChatComponent implements OnInit {
   myMessageList: ListMessage[];
   isLoading = true;
   memberRoom = [];
+  isMenuOpen = true;
+  contentMargin = 440;
 
   constructor(
     private routeActive: ActivatedRoute,
-    private myMessageService: RoomChatService
+    private myMessageService: RoomChatService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -26,9 +30,13 @@ export class MyChatComponent implements OnInit {
       const id = params.id;
       this.myMessageService.getMember(id).subscribe(allMember => {
         this.memberRoom = allMember;
+        console.log(this.memberRoom);
         this.isLoading = false;
       });
     });
+
+    // tslint:disable-next-line: no-unused-expression
+    this.authService;
   }
 
   myMessage(textSend: ListMessage) {
@@ -42,5 +50,16 @@ export class MyChatComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onToolbarMenuToggle() {
+
+    this.isMenuOpen = !this.isMenuOpen;
+
+    if (!this.isMenuOpen) {
+      this.contentMargin = 70;
+    } else {
+      this.contentMargin = 440;
+    }
   }
 }

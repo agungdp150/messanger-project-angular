@@ -4,13 +4,11 @@ div {
       display: flex;
       position: absolute;
       z-index: 10;
-      top: 528px;
+      bottom: 0px;
       width: 100%;
-      @media screen and (min-height:768px) {
-        top: 661px;
-    }
+      
       input {
-        width: 94%;
+        width: 100%;
         border-radius: 0px;
         height: 27px;
         font-size: 16px;
