@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../../service/auth.service';
 
 @Component({
@@ -8,11 +10,14 @@ import { AuthService } from '../../../service/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private breakpointObserver: BreakpointObserver) { }
+
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   ngOnInit() {
     // tslint:disable-next-line: no-unused-expression
     this.authService;
   }
-
 }

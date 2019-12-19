@@ -1,73 +1,52 @@
-.lo-container {
-  background-color: #32407B;
-  height: 569px;
-  color: white;
+.container {
+  width: 440px;
+  margin: auto;
+  padding: 50px;
 
-  @media only screen and (min-height : 768px) {
-    height: 704px;
-  }
+  .myCard {
 
-  .lo-body {
-    max-width: 1125px;
-    margin: 0px auto;
-    padding-top: 70px;
-
-    @media only screen and (min-height : 768px) {
-      padding-top: 150px;
+    mat-card-header {
+      display: inline; 
+      text-align: center;
+  
+      h2 {
+        font-weight: 400;
+        margin: 15px auto;
+      }
     }
 
-    .lo-card {
-      margin: 0px auto;
-      max-width: 400px;
-      padding: 30px;
-      background-color: #151965;
+    min-height: 450px;
+    height: auto;
+    padding: 30px;
 
-      mat-card-title {
-        text-align: center;
+    .logo {
+      text-align: center;
+
+      img {
+        width: 140px;
+        margin: 0px auto;
       }
-
-      .lo-form {
-        min-width: 150px;
-        max-width: 500px;
-        width: 100%;
-        margin-top: 10px;
-
-        ::ng-deep .mat-focused .mat-form-field-label {
-          color: rgb(255, 255, 255) !important;
-         }
-        
-         ::ng-deep.mat-form-field-underline {
-          background-color: rgb(255, 255, 255) !important;
-        } 
-        
-        ::ng-deep.mat-form-field-ripple {
-         background-color: rgb(255, 255, 255) !important;;
-        }
-      }
-      
-      .lo-full-width {
-        width: 100%;
-        margin: 10px 0px;
-      }
-
-      button {
-        width: 100%;
-        margin-top: 20px;
-        background-color: #46B5D1;
-        color: white;
-      }
-
     }
-  }
 
-  .alert {
-    text-align: center;
-    background: rgb(236, 125, 125);
-    max-width: 400px;
-    padding: 10px;
-    margin: 10px auto;
-    color: rgb(131, 13, 13);
-    border-radius: 4px;
-    font-size: 14px;
+    .form-style {
+      display: inline;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .footer-login {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 20px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-family: monospace;
+      }
+    }
+
   }
 }

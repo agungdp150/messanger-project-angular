@@ -1,67 +1,74 @@
-<app-navbar></app-navbar>
-
-<div class="lo-container">
-  <div class="lo-body">
-    <mat-card class="lo-card">
-      <mat-card-title>Login</mat-card-title>
-      <div *ngIf="isLoading" style="text-align: center;">
-        <app-loading></app-loading>
+<div class="container">
+  <mat-card class="myCard">
+    <mat-card-header>
+      <div class="logo">
+        <a routerLink="/" style="cursor: pointer;"><img src="../../../../assets/Logo1.png" alt="Logo"></a>
       </div>
-      <div class="alert" *ngIf="error">
-        <strong>Something went wrong</strong>, please fill the form!!
-      </div>
-      <mat-card-content>
-        <form 
-        class="lo-form"
-        (ngSubmit)="loginUsers(form)" 
-        #form="ngForm"
-        *ngIf="!isLoading"
-        >
-          <mat-form-field class="lo-full-width">
-            <input 
-            matInput 
-            type="text" 
-            placeholder="Name"
-            ngModel 
-            name="name"
-            required
-            >
-          </mat-form-field>
+      <h2>Sign In</h2>
+    </mat-card-header>
+    <form
+      (ngSubmit)="loginUsers(form)" 
+      #form="ngForm"
+    >
+    <mat-card-content>
 
-          <mat-form-field class="lo-full-width">
-            <input 
-            matInput 
-            type="email" 
-            placeholder="Email"
-            ngModel 
-            name="email"
-            required
-            email
-            >
-          </mat-form-field>
+        <mat-form-field appearance="outline" class="form-style">
+          <mat-label>Name</mat-label>
+          <input 
+          matInput 
+          type="text" 
+          ngModel 
+          name="name"
+          required
+          placeholder="Your name">
+          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
+        </mat-form-field><br>
 
-          <mat-form-field class="lo-full-width">
-            <input 
-            matInput 
-            type="password" 
-            placeholder="Password"
-            ngModel
-            name="password"
-            required
-            >
-          </mat-form-field>
-
-          <button 
-          mat-raised-button 
-          type="submit"
-          color="accent"
-          [disabled]="!form.valid"
+        <mat-form-field appearance="outline" class="form-style">
+          <mat-label>Email</mat-label>
+          <input 
+          matInput 
+          placeholder="Your email"
+          type="email" 
+          placeholder="Email"
+          ngModel 
+          name="email"
+          required
+          email
           >
-          Login
-          </button>
-        </form>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
+        </mat-form-field><br>
 
+        <mat-form-field appearance="outline" class="form-style">
+          <mat-label>Password</mat-label>
+          <input 
+          matInput 
+          placeholder="Your password"
+          type="password" 
+          ngModel
+          name="password"
+          required
+          >
+          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
+        </mat-form-field><br>
+
+    </mat-card-content>
+    <mat-card-footer class="footer-login">
+      <div>
+        <a routerLink="/user/signup" >Create account</a>
+      </div>
+      <div>
+        <button 
+        mat-raised-button 
+        color="primary"
+        type="submit"
+        [disabled]="!form.valid"
+        >
+          Login
+        </button>
+      </div>
+    </mat-card-footer>
+  </form
+  >
+  </mat-card>
+</div>

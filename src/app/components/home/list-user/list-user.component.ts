@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation, VERSION, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { UserAddComponent } from '../user-add/user-add.component';
 import { CreateRoomComponent } from '../create-room/create-room.component';
 
@@ -22,9 +21,9 @@ export class ListUserComponent implements OnInit {
   navigateRoom = false;
   navigateUser = false;
   isLoading = true;
-
-  displayedColumns = ['no', 'name', 'email', 'userId', 'action'];
-  dataSource = new MatTableDataSource();
+  ngVersion: string = VERSION.full;
+  matVersion = '8.2.3';
+  breakpoint: number;
 
   constructor(
     private userService: UserService,
@@ -35,8 +34,9 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserList().subscribe(listUsers => {
-      this.dataSource.data = listUsers;
+      this.users = listUsers;
       this.isLoading = false;
+      console.log(this.users);
     });
 
     this.userService.getRoomList().subscribe(myRoom => {
@@ -47,6 +47,8 @@ export class ListUserComponent implements OnInit {
 
     // tslint:disable-next-line: no-unused-expression
     this.authService;
+
+    this.breakpoint = (window.innerWidth <= 760) ? 2 : 4;
   }
 
   myChatRoom(roomId: number) {
@@ -66,4 +68,8 @@ export class ListUserComponent implements OnInit {
   openCreateRoom(): void  {
     this.dialogPopup.open(CreateRoomComponent);
  }
+
+  onResize(event: { target: { innerWidth: number; }; }) {
+    this.breakpoint = (event.target.innerWidth <= 760) ? 2 : 4;
+  }
 }

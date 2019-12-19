@@ -7,50 +7,41 @@
       <button mat-raised-button style="margin: 5px 0px 20px" (click)="openDialog()">
         Add User <mat-icon>person_add</mat-icon>
       </button>
+      
+      <div class="h-list-container">
+        <mat-grid-list 
+        [cols]="breakpoint" 
+        rowHeight="200" 
+        (window:resize)="onResize($event)" 
+        gutterSize="10px" 
+        class="gridUser"
+        >
 
-      <div class="h-list-container mat-elevation-z8">
+        <div  *ngFor="let user of users" >
+          <mat-grid-tile class="grid-style">
 
-        <mat-table [dataSource]="dataSource">
+            <mat-grid-tile-header class="profile-image">
+              <div *ngIf="user.profile_picture !== ''">
+                <img src={{user.profile_picture}} alt="profile">
+              </div>
+              <div *ngIf="user.profile_picture === ''">
+                <img src="../../../../assets//e73877aee5b14670b927bea6dd16996f.jpg" alt="profile">
+              </div>
+              <span><h3>{{user.name}}</h3></span>
+            </mat-grid-tile-header>
+              <p style="color: white;">User ID: {{user.id}}</p>
+            <mat-grid-tile-footer>
+              <button mat-button (click)="detailUser(user.id)"  >View</button>
+            </mat-grid-tile-footer>
 
-          <ng-container matColumnDef="no">
-            <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
-            <mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="userId">
-            <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-            <mat-cell *matCellDef="let element"> <button mat-icon-button (click)="detailUser(element.id)">
-                <mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon>
-              </button> </mat-cell>
-          </ng-container>
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-        </mat-table>
-
-        <div class="spinner" *ngIf="isLoading">
-          <mat-spinner diameter="30"></mat-spinner>
-          <p style="margin: 5px 0px 0px 20px;">Please Wait...</p>
+          </mat-grid-tile>
         </div>
+
+        </mat-grid-list>
 
 
       </div>
+
 
     </mat-tab>
     <mat-tab label="Room" class="h-tab2">
@@ -66,26 +57,34 @@
         <mat-spinner diameter="30"></mat-spinner>
         <p style="margin: 5px 0px 0px 20px;">Please Wait...</p>
       </div>
-      <div class="h-room-container">
-        <div class="h-room" *ngFor="let room of myListRoom">
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>{{room.room_name}}</mat-card-title>
-              <mat-card-subtitle>Room id: {{room.id}}</mat-card-subtitle>
-            </mat-card-header>
-            <hr>
-            <mat-card-content>
-              <p style="text-align: center;">
-                Create by admin: {{room.admin_id}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions style="display: flex; justify-content: flex-end;">
-              <button mat-button (click)="myChatRoom(room.id)">Enter Room</button>
-            </mat-card-actions>
-          </mat-card>
+
+      <div class="h-list-container">
+        <mat-grid-list 
+        [cols]="breakpoint" 
+        rowHeight="200" 
+        (window:resize)="onResize($event)" 
+        gutterSize="10px" 
+        class="gridUser"
+        >
+
+        <div  *ngFor="let room of myListRoom" >
+          <mat-grid-tile class="grid-style">
+
+            <mat-grid-tile-header class="profile-image">
+              <h3>{{room.room_name}}</h3>
+            </mat-grid-tile-header>
+              <p style="color: white;">Room ID: {{room.id}}</p>
+            <mat-grid-tile-footer>
+              <button mat-button (click)="myChatRoom(room.id)"  >Enter Room</button>
+            </mat-grid-tile-footer>
+
+          </mat-grid-tile>
         </div>
 
+        </mat-grid-list>
+
       </div>
+
     </div>
     </mat-tab>
   </mat-tab-group>

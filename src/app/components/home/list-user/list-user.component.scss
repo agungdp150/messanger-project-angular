@@ -1,39 +1,39 @@
 .h-container {
   color: #000;
-  max-width: 1125px;
+  padding: 20px;
   margin: 0px auto;
 
   .h-list {
-    color: #000;
+    color: rgb(255, 255, 255);
     margin-top: 20px;
 
-    /* Styles for tab labels */
-    .mat-tab-label {
-      color: rgb(0, 0, 0);
-      font-weight: 700;
-    }
-
-    /* Styles for the active tab label */
-    .mat-tab-label.mat-tab-label-active {
-      color: rgb(41, 52, 151);
-      font-weight: 700;
-    }
-
-    .mat-ink-bar {
-      background-color: green;
-    }
-
-    .h-tab1 {
-      max-width: 1125px;
-    }
-
     .h-list-container {
-      height: 330px;
+      height: 342px;
       overflow: auto;
     }
 
-    table {
-      width: 100%;
+    .gridUser {
+
+      .grid-style {
+        background-color: #b8b2b2;
+
+        .profile-image {
+          padding: 10px 10px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            margin-right: 10px;
+          }
+        }
+
+        mat-grid-tile-footer {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
     }
   }
 
@@ -46,15 +46,5 @@
     justify-content: center;
   }
 
-  .h-room-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0px auto;
-    overflow: auto;
-    height: 360px;
-    .h-room {
-      max-width: 400px;
-      margin: 10px;
-    }
-  }
+
 }
