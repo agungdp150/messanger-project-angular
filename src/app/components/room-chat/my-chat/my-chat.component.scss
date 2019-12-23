@@ -1,122 +1,52 @@
-div {
-  #toolbarMenu {
-    cursor: pointer;
-    margin-right: 20px;
-  }
+.side-container {
+  height: 100%;
 
-  #mainToolbar .toolbar-spacer {
-    flex: 1 1 auto;
-  }
+  mat-sidenav-container {
+    height: 100%;
 
-  .logo {
-    img {
-      width: 140px;
-      margin-top: 10px;
+    .hide-side {
+      height: 100%;
+      visibility: hidden;
+      width: 250px;
+
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .logo {
+      img {
+        width: 50%;
+      }
+
+      .navbar-side {
+        position: sticky;
+        width: 100%;
+      }
+
+      .side-list {
+        padding: 10px;
+      }
     }
   }
 
-  .nav-space {
-    padding: 0 14px;
-  }
+  mat-sidenav-content {
+    height: 100%;
+    overflow: hidden;
 
-  @media screen and (max-width : 599px) {
-    mat-toolbar {
-      height: 64px;
-    }
-  }
+    .navbar-content {
 
-  #mainToolbar .toolbar-icon {
-    cursor: pointer;
-    margin: 0 8px;
-  }
+      .hide-side-mobile {
 
-  #sidenavContainer {
-    margin-top: 64px;
-    overflow-x: hidden;
-  }
+        mat-toolbar {
 
-  #sidenav {
-    width: 240px;
-  }
+          button {
+            display: none;
 
-  #sidenav.menu-close {
-    width: 70px;
-  }
-
-  #sidenav.menu-open {
-    width: 440px;
-
-    @media screen and (max-width : 424px) {
-      width: 200px;
-    }
-  }
-
-  #sidenav .mat-list-item-content {
-    padding: 0px;
-  }
-
-  #sidenav .profile {
-    padding: 10px;
-    margin: 5px 5px;
-    display: flex;
-
-    img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    h4 {
-      margin: 10px 10px 0px 20px;
-      font-weight: 500;
-    }
-  }
-
-  #sidenav .menu-item {
-    width: 100%;
-    border-radius: 0;
-    text-align: left;
-    padding: 0px;
-    // padding: 10px;
-  }
-
-  #sidenav .menu-item:hover {
-    background: #eee;
-  }
-
-  #sidenav .menu-item mat-icon {
-    margin-right: 20px;
-    margin-left: 12px;
-    overflow-x: hidden;
-  }
-
-  .dash-list h3 {
-    padding: 12px;
-  }
-
-  .r-chat-container {
-    // height: 569px;
-
-
-    .chat-side {
-      width: 30%;
-      padding: 1em;
-    }
-
-    .user {
-      padding: 5px;
-      margin: 10px 0px;
-      border-radius: 3px;
-
-      p {
-        font-size: 16px;
-        margin: 0px;
-
-        i {
-          font-size: 10px;
-          color: chartreuse;
+            @media only screen and (max-width: 768px) {
+              display: unset;
+            }
+          }
         }
       }
     }

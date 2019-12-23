@@ -14,7 +14,7 @@ export class MyChatComponent implements OnInit {
   isLoading = true;
   memberRoom = [];
   isMenuOpen = true;
-  contentMargin = 440;
+  opened = false;
 
   constructor(
     private routeActive: ActivatedRoute,
@@ -50,16 +50,5 @@ export class MyChatComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  onToolbarMenuToggle() {
-
-    this.isMenuOpen = !this.isMenuOpen;
-
-    if (!this.isMenuOpen) {
-      this.contentMargin = 70;
-    } else {
-      this.contentMargin = 440;
-    }
   }
 }

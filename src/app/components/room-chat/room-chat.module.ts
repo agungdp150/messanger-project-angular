@@ -5,6 +5,7 @@ import { ChatSideComponent } from './chat-side/chat-side.component';
 import { FormComponent } from './form/form.component';
 import { MyChatComponent } from './my-chat/my-chat.component';
 import { RoomChatRoutingModule } from './room-chat.routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -17,7 +18,8 @@ import { RoomChatRoutingModule } from './room-chat.routing.module';
   imports: [
     CommonModule,
     RoomChatRoutingModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   exports : [
     CommonModule,

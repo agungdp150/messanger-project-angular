@@ -18,7 +18,7 @@ const routes: Routes = [
     path : 'room/:id',
     loadChildren : './components/room-chat/room-chat.module#RoomChatModule',
     canActivate : [ProtectNavGuard],
-    resolve : {myMessageList : RoomResolverService}
+    // resolve : {myMessageList : RoomResolverService}
   },
 
 
