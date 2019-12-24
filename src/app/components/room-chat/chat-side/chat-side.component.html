@@ -1,74 +1,31 @@
-<section>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/320" alt="user">
+<section #scrollDown>
+  <div *ngFor="let sending of sender">
+
+    <div *ngIf="(myIdCheck !== sending.sender.id)" class="buble-chat" fxLayout="row" >
+      <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
+        <img src={{sending.sender.profile_picture}} alt="user">
+      </div>
+      <div class="avatar" *ngIf="sending.sender.profile_picture === ''">
+        <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
+      </div>
+      <div class="text-buble">
+        <h3>{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">17.33</span></h3>
+        <p>{{sending.content}}</p>
+      </div>
     </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
+
+    <div *ngIf="(myIdCheck === sending.sender.id)" class="buble-chat" fxLayout="row">
+      <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
+        <img src={{sending.sender.profile_picture}} alt="user">
+      </div>
+      <div class="avatar" *ngIf="sending.sender.profile_picture === ''">
+        <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
+      </div>
+      <div class="text-buble">
+        <h3 class="user">{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300; margin-left: 5px;">17.33</span></h3>
+        <p>{{sending.content}}</p>
+      </div>
     </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/200" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survive</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/100" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/500" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/300" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/300" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/300" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
-    </div>
-  </div>
-  <div class="buble-chat" fxLayout="row">
-    <div class="avatar">
-      <img src="http://i.pravatar.cc/300" alt="user">
-    </div>
-    <div class="text-buble">
-      <h3>Jhon Doe <span style="font-size: 12px; font-weight: 300;">17.33</span></h3>
-      <p>Hi I am from singapore I like using this app this really comfortable</p>
-    </div>
+
   </div>
 </section>

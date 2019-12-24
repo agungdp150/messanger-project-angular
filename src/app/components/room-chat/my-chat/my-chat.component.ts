@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/service/auth.service';
 export class MyChatComponent implements OnInit {
   myMessageList: ListMessage[];
   isLoading = true;
+  userId: string;
+  myIdCheck: number;
   memberRoom = [];
   isMenuOpen = true;
   opened = false;
@@ -20,17 +22,21 @@ export class MyChatComponent implements OnInit {
     private routeActive: ActivatedRoute,
     private myMessageService: RoomChatService,
     private authService: AuthService
-  ) {}
+  ) {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    // tslint:disable-next-line: radix
+    this.myIdCheck = parseInt(this.userId);
+  }
 
   ngOnInit() {
-
     this.myMessageList = this.routeActive.snapshot.data.myMessageList;
 
     this.routeActive.params.subscribe(params => {
       const id = params.id;
       this.myMessageService.getMember(id).subscribe(allMember => {
         this.memberRoom = allMember;
-        console.log(this.memberRoom);
+        console.log(this.memberRoom[0].user_id);
         this.isLoading = false;
       });
     });
@@ -40,15 +46,19 @@ export class MyChatComponent implements OnInit {
   }
 
   myMessage(textSend: ListMessage) {
-    this.myMessageService.handleSend(textSend).subscribe(
-      response => {
-        console.log(response);
-        this.myMessageList.push(response);
-
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if (textSend.content === null || textSend.content === '') {
+      console.log(textSend);
+      return;
+    } else {
+      this.myMessageService.handleSend(textSend).subscribe(
+        response => {
+          console.log(response);
+          this.myMessageList.push(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

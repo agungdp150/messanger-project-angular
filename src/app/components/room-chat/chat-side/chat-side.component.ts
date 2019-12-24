@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ListMessage } from 'src/app/model/user.model';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-chat-side',

@@ -4,21 +4,15 @@
       <div class="navbar-side">
         <mat-toolbar color="primary">
           <div class="logo">
-            <img src="../../../../assets/Logo1.png" alt="logo" />
+            <a routerLink="/"> <img src="../../../../assets/Logo1.png" alt="logo" /></a>
           </div>
         </mat-toolbar>
       </div>
       <div class="side-list">
         <div>
           <div>
-            <button
-              mat-button
-              style="padding: 0px 15px 0px 0px; margin: 5px 10px;"
-              [matMenuTriggerFor]="menu"
-            >
-              <mat-icon aria-hidden="false" aria-label="Example home icon"
-                >more_vert</mat-icon
-              >
+            <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;" [matMenuTriggerFor]="menu">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
               Room
             </button>
             <mat-menu #menu="matMenu">
@@ -27,32 +21,19 @@
             </mat-menu>
           </div>
 
-          <button
-          mat-button
-          style="padding: 0px 15px 0px 0px; margin: 5px 10px;"
-        >
-          + Invite User
-        </button>
+          <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;">
+            + Invite User
+          </button>
 
           <mat-list>
             <h3 mat-subheader>
-              <mat-icon
-                aria-hidden="false"
-                aria-label="Example home icon"
-                style="margin-right: 5px;"
-                >people</mat-icon
-              >
+              <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;">people</mat-icon>
               User List
             </h3>
-            <mat-list-item *ngFor="let roomMember of memberRoom">
+            <mat-list-item *ngFor="let roomMember of memberRoom" style="height: 20px;">
               <p mat-line style="font-size: 14px;">
-                <mat-icon
-                  aria-hidden="false"
-                  aria-label="Example home icon"
-                  style="font-size: 12px;"
-                >
-                  radio_button_unchecked</mat-icon
-                >{{roomMember.user.name}}
+                <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 12px;">
+                  radio_button_unchecked</mat-icon>{{roomMember.user.name}}
               </p>
             </mat-list-item>
           </mat-list>
@@ -65,6 +46,11 @@
           <mat-sidenav [(opened)]="opened">
             <div class="navbar-side">
               <mat-toolbar color="primary">
+                <div>
+                  <button mat-icon-button style="padding: 0px; margin: 0px 10px;" (click)="opened = !opened">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+                  </button>
+                </div>
                 <div class="logo">
                   <img src="../../../../assets/Logo1.png" alt="logo" />
                 </div>
@@ -73,14 +59,8 @@
 
             <div>
               <div>
-                <button
-                  mat-button
-                  style="padding: 0px 15px 0px 0px; margin: 5px 10px;"
-                  [matMenuTriggerFor]="menu"
-                >
-                  <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >more_vert</mat-icon
-                  >
+                <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;" [matMenuTriggerFor]="menu">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
                   Room
                 </button>
                 <mat-menu #menu="matMenu">
@@ -89,32 +69,20 @@
                 </mat-menu>
               </div>
 
-              <button
-              mat-button
-              style="padding: 0px 15px 0px 0px; margin: 5px 10px;"
-            >
-              + Invite User
-            </button>
+              <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;">
+                + Invite User
+              </button>
 
               <mat-list>
                 <h3 mat-subheader>
-                  <mat-icon
-                    aria-hidden="false"
-                    aria-label="Example home icon"
-                    style="margin-right: 5px;"
-                    >people
+                  <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;">people
                   </mat-icon>
                   User in My Room
                 </h3>
-                <mat-list-item *ngFor="let roomMember of memberRoom">
+                <mat-list-item *ngFor="let roomMember of memberRoom" style="height: 20px;">
                   <p mat-line style="font-size: 14px;">
-                    <mat-icon
-                      aria-hidden="false"
-                      aria-label="Example home icon"
-                      style="font-size: 12px;"
-                    >
-                      radio_button_unchecked</mat-icon
-                    >{{roomMember.user.name}}
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 12px;">
+                      radio_button_unchecked</mat-icon>{{roomMember.user.name}}
                   </p>
                 </mat-list-item>
               </mat-list>
@@ -123,23 +91,21 @@
           <mat-sidenav-content class="hide-side-mobile">
             <mat-toolbar color="primary">
               <div>
-                <button
-                  mat-icon-button
-                  style="padding: 0px; margin: 0px 10px;"
-                  (click)="opened = !opened"
-                >
-                  <mat-icon aria-hidden="false" aria-label="Example home icon"
-                    >menu</mat-icon
-                  >
+                <button mat-icon-button style="padding: 0px; margin: 0px 10px;" (click)="opened = !opened">
+                  <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
                 </button>
               </div>
-              <h4>Hello Room Name</h4>
+              <div *ngFor="let roomMember of memberRoom">
+                <h4 *ngIf="roomMember.user_id === myIdCheck">{{roomMember.user.name}}</h4>
+              </div>
+              <span class="spacer"></span>
+              <p>Logout</p>
             </mat-toolbar>
             <div>
-              <app-chat-side></app-chat-side>
+              <app-chat-side [sender]="myMessageList"></app-chat-side>
             </div>
             <div>
-              <app-form></app-form>
+              <app-form (myMessage)="myMessage($event)"></app-form>
             </div>
           </mat-sidenav-content>
         </mat-sidenav-container>

@@ -6,7 +6,6 @@ section {
   overflow: auto;
 
   .buble-chat {
-    // background-color: lightblue;
     padding: 10px;
 
     .avatar {
@@ -30,9 +29,17 @@ section {
         font-weight: 600;
       }
 
+      .user {
+        padding: 0px;
+        margin: 0px 0px 5px 0px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #ec3875;
+      }
+
       p {
         padding: 0px;
-        margin: 5px 0px;
+        margin: 3px 0px;
         font-size: 14px;
         max-width: 1125px;
         line-height: 20px;
