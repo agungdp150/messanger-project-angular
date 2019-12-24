@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ListMessage } from 'src/app/model/user.model';
 import { RoomChatService } from 'src/app/service/room-chat.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-my-chat',
@@ -15,13 +16,15 @@ export class MyChatComponent implements OnInit {
   userId: string;
   myIdCheck: number;
   memberRoom = [];
+  myListRoom = [];
   isMenuOpen = true;
   opened = false;
 
   constructor(
     private routeActive: ActivatedRoute,
     private myMessageService: RoomChatService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
@@ -36,9 +39,12 @@ export class MyChatComponent implements OnInit {
       const id = params.id;
       this.myMessageService.getMember(id).subscribe(allMember => {
         this.memberRoom = allMember;
-        console.log(this.memberRoom[0].user_id);
         this.isLoading = false;
       });
+    });
+
+    this.userService.getRoomList().subscribe(myRoom => {
+      this.myListRoom = myRoom;
     });
 
     // tslint:disable-next-line: no-unused-expression

@@ -36,13 +36,10 @@ export class ListUserComponent implements OnInit {
     this.userService.getUserList().subscribe(listUsers => {
       this.users = listUsers;
       this.isLoading = false;
-      console.log(this.users);
     });
 
     this.userService.getRoomList().subscribe(myRoom => {
       this.myListRoom = myRoom;
-
-      console.log(this.myListRoom);
     });
 
     // tslint:disable-next-line: no-unused-expression
