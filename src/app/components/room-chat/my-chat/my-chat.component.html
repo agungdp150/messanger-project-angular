@@ -10,10 +10,66 @@
       </div>
       <div class="side-list">
         <div>
-          <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;">
-            + Invite User
-          </button>
+          <div>
+            <button mat-button (click)="openDialog(myTemplate)" style="padding: 0px 10px 0px 10px; margin: 5px 10px;">
+              + Invite User
+            </button>
 
+            <ng-template #myTemplate>
+              <h1 mat-dialog-title>Add user to room</h1>
+              <hr>
+              <form
+              #form="ngForm" 
+              (ngSubmit)="handleAddUser(form)"
+              >
+                <div mat-dialog-content>
+                  <p>Please choosee ID user and room</p>
+                  <div>
+                    <mat-form-field class="form-add">
+                      <input 
+                      matInput 
+                      type="number" 
+                      placeholder="Room id"
+                      ngModel
+                      name="room_id"
+                      required
+                      >
+                    </mat-form-field><br>
+                    <mat-form-field class="form-add">
+                      <input 
+                      matInput 
+                      type="number" 
+                      placeholder="User id"
+                      ngModel
+                      name="user_id"
+                      required
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div mat-dialog-actions>
+                  <button 
+                  mat-button 
+                  mat-dialog-close
+                  >
+                  No Thanks
+                </button>
+                  <button 
+                  mat-button 
+                  type="submit" 
+                  mat-dialog-close
+                  [disabled]="!form.valid"
+                  >
+                  Add +
+                </button>
+                </div>
+              </form
+              >
+            </ng-template>
+              
+
+          </div>
+          
           <mat-list>
             <h3 mat-subheader>
               <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;">people</mat-icon>
@@ -48,9 +104,65 @@
 
             <div>
 
-              <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;">
-                + Invite User
-              </button>
+              <div>
+                <button mat-button (click)="openDialog(myTemplate)" style="padding: 0px 10px 0px 10px; margin: 5px 10px;">
+                  + Invite User
+                </button>
+    
+                <ng-template #myTemplate>
+                  <h1 mat-dialog-title>Add user to room</h1>
+                  <hr>
+                  <form
+                  #form="ngForm" 
+                  (ngSubmit)="handleAddUser(form)"
+                  >
+                    <div mat-dialog-content>
+                      <p>Please choosee ID user and room</p>
+                      <div>
+                        <mat-form-field class="form-add">
+                          <input 
+                          matInput 
+                          type="number" 
+                          placeholder="Room id"
+                          ngModel
+                          name="room_id"
+                          required
+                          >
+                        </mat-form-field><br>
+                        <mat-form-field class="form-add">
+                          <input 
+                          matInput 
+                          type="number" 
+                          placeholder="User id"
+                          ngModel
+                          name="user_id"
+                          required
+                          >
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div mat-dialog-actions>
+                      <button 
+                      mat-button 
+                      mat-dialog-close
+                      >
+                      No Thanks
+                    </button>
+                      <button 
+                      mat-button 
+                      type="submit" 
+                      mat-dialog-close
+                      [disabled]="!form.valid"
+                      >
+                      Add +
+                    </button>
+                    </div>
+                  </form
+                  >
+                </ng-template>
+                  
+    
+              </div>
 
               <mat-list>
                 <h3 mat-subheader>
@@ -83,13 +195,13 @@
                   <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
                   Room
                 </button>
-                
+
                 <mat-menu #menu="matMenu">
-                  <a mat-menu-item *ngFor="let room of myListRoom" [routerLink]="['/room', room.id]">
+                  <button mat-menu-item *ngFor="let room of myListRoom" (click)="roomNav(room.id)">
                     {{room.room_name}}
-                  </a>
+                  </button>
                 </mat-menu>
-  
+
               </div>
             </mat-toolbar>
             <div>

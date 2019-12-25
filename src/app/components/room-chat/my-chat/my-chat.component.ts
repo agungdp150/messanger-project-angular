@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ListMessage } from 'src/app/model/user.model';
 import { RoomChatService } from 'src/app/service/room-chat.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
+import { MatDialog } from '@angular/material';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-my-chat',
@@ -19,15 +21,17 @@ export class MyChatComponent implements OnInit {
   myListRoom = [];
   isMenuOpen = true;
   opened = false;
+  navigateRoom = false;
 
   constructor(
     private routeActive: ActivatedRoute,
     private myMessageService: RoomChatService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog,
+    private routeNav: Router
   ) {
     this.userId = localStorage.getItem('id');
-    console.log(this.userId);
     // tslint:disable-next-line: radix
     this.myIdCheck = parseInt(this.userId);
   }
@@ -53,12 +57,10 @@ export class MyChatComponent implements OnInit {
 
   myMessage(textSend: ListMessage) {
     if (textSend.content === null || textSend.content === '') {
-      console.log(textSend);
       return;
     } else {
       this.myMessageService.handleSend(textSend).subscribe(
         response => {
-          console.log(response);
           this.myMessageList.push(response);
         },
         error => {
@@ -66,5 +68,35 @@ export class MyChatComponent implements OnInit {
         }
       );
     }
+  }
+
+  openDialog(templateRef) {
+    const dialogRef = this.dialog.open(templateRef, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  handleAddUser(addUserRoom: NgForm ) {
+    const roomID = addUserRoom.value.room_id;
+    const userID = addUserRoom.value.user_id;
+
+    console.log(roomID, userID);
+    this.userService.handleAddUser(roomID, userID).subscribe(
+      response => {
+        this.memberRoom.push(response);
+        alert('Success adding user!');
+      },
+      error => console.log(error)
+    );
+  }
+
+  roomNav(roomID: number) {
+    this.navigateRoom = true;
+    this.routeNav.navigate(['/room', roomID]);
+    console.log(roomID);
   }
 }
