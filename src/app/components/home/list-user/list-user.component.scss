@@ -6,39 +6,15 @@
   .h-list {
     color: rgb(255, 255, 255);
     margin-top: 20px;
-
-    .h-list-container {
-      height: 342px;
-      overflow: auto;
-    }
-
-    .gridUser {
-
-      .grid-style {
-        background-color: #b8b2b2;
-
-        .profile-image {
-          padding: 10px 10px;
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            object-position: center;
-            margin-right: 10px;
-          }
-        }
-
-        mat-grid-tile-footer {
-          display: flex;
-          justify-content: flex-end;
-        }
-      }
-    }
   }
 
-  .h-tab2 {
-    max-width: 1125px;
+  .h-list-container {
+    overflow: auto;
+    height: calc(72vh - 80px);
+
+    .color-change {
+      background-color: rgb(195, 141, 166);
+    }
   }
 
   .spinner {
@@ -46,5 +22,16 @@
     justify-content: center;
   }
 
+  .profile-image {
+    padding: 10px 10px;
+    img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      margin-right: 10px;
+    }
+  }
 
 }

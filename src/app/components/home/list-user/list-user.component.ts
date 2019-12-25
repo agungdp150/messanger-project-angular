@@ -1,13 +1,16 @@
-import { Component, OnInit, ViewEncapsulation, VERSION, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  VERSION
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { MatDialog } from '@angular/material';
 import { UserAddComponent } from '../user-add/user-add.component';
-import { CreateRoomComponent } from '../create-room/create-room.component';
-
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-list-user',
@@ -45,7 +48,7 @@ export class ListUserComponent implements OnInit {
     // tslint:disable-next-line: no-unused-expression
     this.authService;
 
-    this.breakpoint = (window.innerWidth <= 760) ? 2 : 4;
+    this.breakpoint = window.innerWidth <= 760 ? 2 : 4;
   }
 
   myChatRoom(roomId: number) {
@@ -58,15 +61,34 @@ export class ListUserComponent implements OnInit {
     this.routeNav.navigate(['/user/user-detail', userID]);
   }
 
-  openDialog(): void  {
-     this.dialogPopup.open(UserAddComponent);
+  openDialog(): void {
+    this.dialogPopup.open(UserAddComponent);
   }
 
-  openCreateRoom(): void  {
-    this.dialogPopup.open(CreateRoomComponent);
- }
+  openCreateRoom(templateRef): void {
+    const dialogRef = this.dialogPopup.open(templateRef, {
+      width: '350px'
+    });
 
-  onResize(event: { target: { innerWidth: number; }; }) {
-    this.breakpoint = (event.target.innerWidth <= 760) ? 2 : 4;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  handleNewRoom(createRoom: NgForm) {
+    const roomName = createRoom.value.room_name;
+
+    this.userService.handleNewRoom(roomName).subscribe(
+      response => {
+        this.myListRoom.push(response);
+        alert('Success create your room!');
+      },
+      error => console.log(error)
+    );
+    createRoom.reset();
+  }
+
+  onResize(event: { target: { innerWidth: number } }) {
+    this.breakpoint = event.target.innerWidth <= 760 ? 2 : 4;
   }
 }

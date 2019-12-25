@@ -15,20 +15,6 @@ export class CreateRoomComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  handleNewRoom(createRoom: NgForm) {
-    const roomName = createRoom.value.room_name;
-
-    this.userService.handleNewRoom(roomName).subscribe(
-      response => {
-        // this.myListRoom.push(response);
-        alert('Success create your room!');
-      },
-      error => console.log(error)
-    );
-    createRoom.reset();
-  }
-
   refresh(): void {
     setTimeout(() => {
       window.location.reload();
