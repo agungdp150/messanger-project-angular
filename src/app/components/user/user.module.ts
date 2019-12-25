@@ -9,6 +9,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserComponent } from './user.component';
 import { FormsModule } from '@angular/forms';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -23,7 +24,8 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   exports : [
     CommonModule,

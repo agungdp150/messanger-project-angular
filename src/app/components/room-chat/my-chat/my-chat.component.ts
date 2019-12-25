@@ -38,6 +38,7 @@ export class MyChatComponent implements OnInit {
 
   ngOnInit() {
     this.myMessageList = this.routeActive.snapshot.data.myMessageList;
+    console.log(this.myMessageList);
 
     this.routeActive.params.subscribe(params => {
       const id = params.id;
@@ -84,7 +85,6 @@ export class MyChatComponent implements OnInit {
     const roomID = addUserRoom.value.room_id;
     const userID = addUserRoom.value.user_id;
 
-    console.log(roomID, userID);
     this.userService.handleAddUser(roomID, userID).subscribe(
       response => {
         this.memberRoom.push(response);

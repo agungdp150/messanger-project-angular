@@ -1,74 +1,82 @@
-<div class="container">
-  <mat-card class="myCard">
-    <mat-card-header>
-      <div class="logo">
-        <a routerLink="/" style="cursor: pointer;"><img src="../../../../assets/Logo1.png" alt="Logo"></a>
-      </div>
-      <h2>Sign In</h2>
-    </mat-card-header>
-    <form
+<div class="lo-container" 
+fxLayout="column wrap" 
+fxLayoutAlign="center center">
+  <div>
+    <mat-card class="form-card">
+      <mat-card-header>
+
+        <div class="logo">
+          <a 
+          routerLink="/" 
+          style="cursor: pointer; justify-content: center;"
+          >
+          <img src="../../../../assets/Logo1.png" alt="Logo">
+        </a>
+        </div><br>
+
+      </mat-card-header>
+
+      <p style="text-align: center; font-size: 18px;">Sign In</p>
+
+      <form 
       (ngSubmit)="loginUsers(form)" 
-      #form="ngForm"
-    >
-    <mat-card-content>
+      #form="ngForm">
+        <mat-card-content>
 
-        <mat-form-field appearance="outline" class="form-style">
-          <mat-label>Name</mat-label>
-          <input 
-          matInput 
-          type="text" 
-          ngModel 
-          name="name"
-          required
-          placeholder="Your name">
-          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
-        </mat-form-field><br>
+          <mat-form-field 
+          appearance="outline" 
+          class="form-style">
+            <mat-label>Email</mat-label>
+            <input 
+            matInput 
+            placeholder="Your email" 
+            type="email" 
+            placeholder="Email" 
+            ngModel 
+            name="email" 
+            required
+            email>
+            <mat-hint 
+            style="color: red;" 
+            *ngIf="error">Something went wrong!
+          </mat-hint>
+          </mat-form-field><br>
 
-        <mat-form-field appearance="outline" class="form-style">
-          <mat-label>Email</mat-label>
-          <input 
-          matInput 
-          placeholder="Your email"
-          type="email" 
-          placeholder="Email"
-          ngModel 
-          name="email"
-          required
-          email
-          >
-          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
-        </mat-form-field><br>
+          <mat-form-field 
+          appearance="outline" 
+          class="form-style">
+            <mat-label>Password</mat-label>
+            <input 
+            matInput placeholder="Your password" 
+            type="password" 
+            ngModel 
+            name="password" 
+            required>
+            <mat-hint 
+            style="color: red;" 
+            *ngIf="error">
+            Something went wrong!
+          </mat-hint>
+          </mat-form-field><br>
 
-        <mat-form-field appearance="outline" class="form-style">
-          <mat-label>Password</mat-label>
-          <input 
-          matInput 
-          placeholder="Your password"
-          type="password" 
-          ngModel
-          name="password"
-          required
-          >
-          <mat-hint style="color: red;" *ngIf="error">Something went wrong!</mat-hint>
-        </mat-form-field><br>
-
-    </mat-card-content>
-    <mat-card-footer class="footer-login">
-      <div>
-        <a routerLink="/user/signup" >Create account</a>
-      </div>
-      <div>
-        <button 
-        mat-raised-button 
-        color="primary"
-        type="submit"
-        [disabled]="!form.valid"
-        >
-          Login
-        </button>
-      </div>
-    </mat-card-footer>
-  </form
-  >
-  </mat-card>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center" style="padding: 0px 20px;">
+          <a 
+          style="
+          color: #fff;
+          text-decoration: none;
+          font-family: monospace;"
+          routerLink="/user/signup">
+          Create account
+          </a>
+          <button 
+          mat-raised-button 
+          type="submit" 
+          [disabled]="!form.valid">
+            Login
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
 </div>

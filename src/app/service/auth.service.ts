@@ -30,11 +30,10 @@ export class AuthService {
     );
   }
 
-  loginUsers(name: string, email: string, password: string) {
+  loginUsers(email: string, password: string) {
     return this.http.post<any>(
       this.loginApi,
       {
-        name,
         email,
         password
       },

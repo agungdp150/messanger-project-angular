@@ -1,52 +1,28 @@
-.container {
-  width: 440px;
-  margin: auto;
-  padding: 50px;
+.lo-container {
+  align-items: center;
+  height: 100vh;
 
-  .myCard {
-
-    mat-card-header {
-      display: inline; 
-      text-align: center;
-  
-      h2 {
-        font-weight: 400;
-        margin: 15px auto;
-      }
-    }
-
-    min-height: 450px;
-    height: auto;
-    padding: 30px;
-
+  .form-card {
+    width: 360px;
+    padding: 20px;
     .logo {
-      text-align: center;
-
+      margin: 10px auto;
       img {
-        width: 140px;
-        margin: 0px auto;
+        width: 150px;
       }
     }
 
-    .form-style {
-      display: inline;
+    form {
 
-      input {
-        width: 100%;
+      .form-style {
+        display: inline;
+
+        input {
+          width: 100%;
+        }
       }
     }
-
-    .footer-login {
-      display: flex;
-      justify-content: space-between;
-      padding: 0px 20px;
-
-      a {
-        color: #fff;
-        text-decoration: none;
-        font-family: monospace;
-      }
-    }
-
   }
+
+
 }

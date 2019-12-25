@@ -29,11 +29,10 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    const name = myLogin.value.name;
     const email = myLogin.value.email;
     const password = myLogin.value.password;
 
-    this.authService.loginUsers(name, email, password).subscribe(
+    this.authService.loginUsers(email, password).subscribe(
       response => {
         this.decodeToken = JSON.stringify(response);
         const decoded = jwt_decode(this.decodeToken);

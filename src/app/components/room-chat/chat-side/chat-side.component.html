@@ -9,11 +9,13 @@
         <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
       </div>
       <div class="text-buble">
-        <h3>{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">17.33</span></h3>
+        <h3>{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+          {{sending.created_at |  date:'mediumDate'}} at {{sending.created_at | date:'shortTime' }}
+        </span></h3>
         <p>{{sending.content}}</p>
       </div>
     </div>
-
+    
     <div *ngIf="(myIdCheck === sending.sender.id)" class="buble-chat" fxLayout="row">
       <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
         <img src={{sending.sender.profile_picture}} alt="user">
@@ -22,7 +24,9 @@
         <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
       </div>
       <div class="text-buble">
-        <h3 class="user">{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300; margin-left: 5px;">17.33</span></h3>
+        <h3 class="user">{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300; margin-left: 5px;">
+          {{sending.created_at |  date:'mediumDate'}} at {{sending.created_at | date:'shortTime' }}
+        </span></h3>
         <p>{{sending.content}}</p>
       </div>
     </div>

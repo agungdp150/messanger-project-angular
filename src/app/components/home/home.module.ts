@@ -4,7 +4,6 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListUserComponent } from './list-user/list-user.component';
 import { UserAddComponent } from './user-add/user-add.component';
-import { CreateRoomComponent } from './create-room/create-room.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -13,10 +12,9 @@ import { CommonModule } from '@angular/common';
   declarations: [
     HomeComponent,
     UserAddComponent,
-    ListUserComponent,
-    CreateRoomComponent
+    ListUserComponent
   ],
-  entryComponents: [UserAddComponent, CreateRoomComponent],
+  entryComponents: [UserAddComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
