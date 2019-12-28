@@ -1,35 +1,76 @@
 <section #scrollDown>
-  <div *ngFor="let sending of sender">
 
-    <div *ngIf="(myIdCheck !== sending.sender.id)" class="buble-chat" fxLayout="row" >
-      <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
-        <img src={{sending.sender.profile_picture}} alt="user">
-      </div>
-      <div class="avatar" *ngIf="sending.sender.profile_picture === ''">
-        <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
-      </div>
-      <div class="text-buble">
-        <h3>{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
-          {{sending.created_at |  date:'mediumDate'}} at {{sending.created_at | date:'shortTime' }}
-        </span></h3>
-        <p>{{sending.content}}</p>
-      </div>
-    </div>
-    
-    <div *ngIf="(myIdCheck === sending.sender.id)" class="buble-chat" fxLayout="row">
-      <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
-        <img src={{sending.sender.profile_picture}} alt="user">
-      </div>
-      <div class="avatar" *ngIf="sending.sender.profile_picture === ''">
-        <img src="../../../../assets/e73877aee5b14670b927bea6dd16996f.jpg" alt="user">
-      </div>
-      <div class="text-buble">
-        <h3 class="user">{{sending.sender.name}} <span style="font-size: 12px; font-weight: 300; margin-left: 5px;">
-          {{sending.created_at |  date:'mediumDate'}} at {{sending.created_at | date:'shortTime' }}
-        </span></h3>
-        <p>{{sending.content}}</p>
-      </div>
-    </div>
+  <div class="wrapper">
+    <div class="content">
 
-  </div>
+       <div class="bubble-chat">
+
+        <div class="avatar">
+          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
+        </div>
+        <div class="text-buble">
+          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+            6/15/15, 9:03 AM
+          </span></h3>
+          <p>Hello Friend</p>
+        </div>
+       </div>
+
+       <div class="bubble-chat">
+
+        <div class="avatar">
+          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
+        </div>
+        <div class="text-buble">
+          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+            6/15/15, 9:03 AM
+          </span></h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, vero.</p>
+        </div>
+
+       </div>
+
+       <div class="bubble-chat">
+
+        <div class="avatar">
+          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
+        </div>
+        <div class="text-buble">
+          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+            6/15/15, 9:03 AM
+          </span></h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+          </p>
+        </div>
+        
+       </div>
+
+       <div class="bubble-chat">
+
+        <div class="avatar">
+          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
+        </div>
+        <div class="text-buble">
+          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+            6/15/15, 9:03 AM
+          </span></h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
+          </p>
+        </div>
+
+       </div>
+
+    </div>
+  </div>  
+
 </section>

@@ -21,7 +21,8 @@ export class MyChatComponent implements OnInit {
   myListRoom = [];
   isMenuOpen = true;
   opened = false;
-  navigateRoom = false;
+  sideHalf = true;
+  contentMargin = 250;
 
   constructor(
     private routeActive: ActivatedRoute,
@@ -38,7 +39,6 @@ export class MyChatComponent implements OnInit {
 
   ngOnInit() {
     this.myMessageList = this.routeActive.snapshot.data.myMessageList;
-    console.log(this.myMessageList);
 
     this.routeActive.params.subscribe(params => {
       const id = params.id;
@@ -95,8 +95,18 @@ export class MyChatComponent implements OnInit {
   }
 
   roomNav(roomID: number) {
-    this.navigateRoom = true;
     this.routeNav.navigate(['/room', roomID]);
-    console.log(roomID);
   }
+
+  openSide() {
+    console.log('Open side', this.sideHalf);
+    this.sideHalf = !this.sideHalf;
+
+    if (!this.sideHalf) {
+      this.contentMargin = 65;
+    } else {
+      this.contentMargin = 250;
+    }
+  }
+
 }

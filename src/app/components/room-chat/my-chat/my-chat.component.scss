@@ -1,56 +1,85 @@
-.side-container {
-  height: 100%;
+.navbar-room {
+  .spacer {
+    flex: 1 1 auto;
+  }
 
-  mat-sidenav-container {
-    height: 100%;
+  .avatar {
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+}
 
-    .hide-side {
-      height: 100%;
-      visibility: hidden;
+
+
+.sidenav-room {
+  .container-side {
+    height: calc(100vh - 64px);
+
+    #sidenav {
       width: 250px;
-
-      @media only screen and (max-width: 768px) {
-        display: none;
-      }
     }
 
-    .logo {
-      img {
-        width: 50%;
-      }
+    #sidenav.menu-close {
+      width: 65px;
+    }
 
-      .navbar-side {
-        position: sticky;
-        width: 100%;
-      }
-
-      .side-list {
-        padding: 10px;
-      }
+    #sidenav.menu-open {
+      width: 250px;
     }
   }
 
-  mat-sidenav-content {
-    height: 100%;
-    overflow: hidden;
+  .my-list {
+    .room-style {
+      padding: 15px 0px;
+      mat-icon {
+        font-size: 18px;
+      }
+      mat-list-item {
+        font-size: 12px;
+        height: 35px;
+      }
+    }
 
-    .navbar-content {
+    .avatar1 {
+      display: flex;
+      align-items: center;
 
-      .hide-side-mobile {
+      h4 {
+        font-size: 14px;
+        font-weight: 500;
+      }
 
-        mat-toolbar {
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-position: center;
+        object-fit: cover;
+        margin-right: 18px;
+      }
+    }
 
-          .menu {
-            display: none;
-
-            @media only screen and (max-width: 768px) {
-              display: unset;
-            }
+    .avatar-style {
+      mat-list-item {
+        .avatar {
+          display: flex;
+          align-items: center;
+          h4 {
+            font-size: 14px;
+            font-weight: 500;
           }
-          
-          .spacer {
-            flex: 1 1 auto;
-            
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-position: center;
+            object-fit: cover;
+            margin-right: 18px;
           }
         }
       }

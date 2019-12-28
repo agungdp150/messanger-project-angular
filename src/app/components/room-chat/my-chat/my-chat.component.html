@@ -1,220 +1,184 @@
-<div class="side-container">
-  <mat-sidenav-container fullscreen>
-    <mat-sidenav opened mode="side" class="hide-side">
-      <div class="navbar-side">
-        <mat-toolbar color="primary">
-          <div class="logo">
-            <a routerLink="/"> <img src="../../../../assets/Logo1.png" alt="logo" /></a>
-          </div>
-        </mat-toolbar>
-      </div>
-      <div class="side-list">
-        <div>
-          <div>
-            <button mat-button (click)="openDialog(myTemplate)" style="padding: 0px 10px 0px 10px; margin: 5px 10px;">
-              + Invite User
-            </button>
+<div class="navbar-room">
+  <mat-toolbar color="primary">
+    <button 
+    mat-icon-button
+    (click)="openSide()"
+    >
+      <mat-icon>
+        menu
+      </mat-icon>
+    </button>
+    <span>Second Line</span>
+    <span class="spacer"></span>
+    <div class="avatar">
+      <img [matMenuTriggerFor]="logout" style="cursor: pointer;" src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200" alt="avatar">
 
-            <ng-template #myTemplate>
-              <h1 mat-dialog-title>Add user to room</h1>
-              <hr>
-              <form
-              #form="ngForm" 
-              (ngSubmit)="handleAddUser(form)"
-              >
-                <div mat-dialog-content>
-                  <p>Please choosee ID user and room</p>
-                  <div>
-                    <mat-form-field class="form-add">
-                      <input 
-                      matInput 
-                      type="number" 
-                      placeholder="Room id"
-                      ngModel
-                      name="room_id"
-                      required
-                      >
-                    </mat-form-field><br>
-                    <mat-form-field class="form-add">
-                      <input 
-                      matInput 
-                      type="number" 
-                      placeholder="User id"
-                      ngModel
-                      name="user_id"
-                      required
-                      >
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div mat-dialog-actions>
-                  <button 
-                  mat-button 
-                  mat-dialog-close
-                  >
-                  No Thanks
-                </button>
-                  <button 
-                  mat-button 
-                  type="submit" 
-                  mat-dialog-close
-                  [disabled]="!form.valid"
-                  >
-                  Add +
-                </button>
-                </div>
-              </form
-              >
-            </ng-template>
-              
-
-          </div>
-          
-          <mat-list>
-            <h3 mat-subheader>
-              <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;">people</mat-icon>
-              User List
-            </h3>
-            <mat-list-item *ngFor="let roomMember of memberRoom" style="height: 20px;">
-              <p mat-line style="font-size: 14px;">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 12px;">
-                  radio_button_unchecked</mat-icon>{{roomMember.user.name}}
-              </p>
-            </mat-list-item>
-          </mat-list>
+      <mat-menu #logout="matMenu" yPosition="below">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <img 
+          src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200" 
+          alt="avatar" 
+          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: center;">
+          <h4 style="margin: 0px; margin-top: 12px; padding: 0px; color: #fff;">Jhon Doe</h4>
+          <p style="font-size: 12px; padding: 0px 50px; margin: 8px 0px; color: #E91E63;">jhon@mail.com</p>
         </div>
+
+        <div fxLayoutAlign="center center" fxLayout="column">
+        <button mat-raised-button color="primary">
+          Logout
+        </button>
       </div>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div class="sidenav-room">
+  <mat-sidenav-container 
+  class="container-side"
+  >
+
+    <mat-sidenav 
+    opened 
+    id="sidenav"
+    #sidenav
+    [class.menu-open]="sideHalf"
+    [class.menu-close]="!sideHalf"
+    mode="side" 
+    >
+    
+    <mat-list class="my-list">
+
+      <div style="overflow: hidden;">
+        <mat-list-item>
+          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" style="margin-right: 15px;"><mat-icon>add</mat-icon></button>
+
+          <mat-menu #menu="matMenu">
+            <button 
+            mat-menu-item
+            (click)="openDialog(newRoom)"
+            >
+              Create Room
+            </button>
+            <button 
+            mat-menu-item
+            (click)="openDialog(inviteUser)"
+            >
+              Invite User
+            </button>
+          </mat-menu>
+
+        </mat-list-item>
+
+        <div class="room-style">
+        <mat-list-item>
+          <mat-icon mat-list-icon>label</mat-icon>
+          <a mat-line>Room1</a>
+        </mat-list-item> 
+        <mat-list-item>
+          <mat-icon mat-list-icon>label</mat-icon>
+          <a mat-line>Room1</a>
+        </mat-list-item> 
+        <mat-list-item>
+          <mat-icon mat-list-icon>label</mat-icon>
+          <a mat-line>Room1</a>
+        </mat-list-item> 
+      </div>
+
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <div class="avatar1">
+        <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
+        <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+      </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <div class="avatar-style">
+        <mat-list-item>
+          <div class="avatar">
+          <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+        </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="avatar">
+          <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+        </div>
+        </mat-list-item>
+      </div>
+
+      </div>
+
+    </mat-list>
+
+    <ng-template #newRoom>
+      <h1 mat-dialog-title>Create New Channel</h1>
+    </ng-template>
+
+    <ng-template #inviteUser>
+      <h1 mat-dialog-title>Add user to room</h1>
+      <hr>
+      <form
+      #form="ngForm" 
+      (ngSubmit)="handleAddUser(form)"
+      >
+        <div mat-dialog-content>
+          <p>Please choosee ID user and room</p>
+          <div>
+            <mat-form-field class="form-add">
+              <input 
+              matInput 
+              type="number" 
+              placeholder="Room id"
+              ngModel
+              name="room_id"
+              required
+              >
+            </mat-form-field><br>
+            <mat-form-field class="form-add">
+              <input 
+              matInput 
+              type="number" 
+              placeholder="User id"
+              ngModel
+              name="user_id"
+              required
+              >
+            </mat-form-field>
+          </div>
+        </div>
+        <div mat-dialog-actions>
+          <button 
+          mat-button 
+          mat-dialog-close
+          >
+          No Thanks
+        </button>
+          <button 
+          mat-button 
+          type="submit" 
+          mat-dialog-close
+          [disabled]="!form.valid"
+          >
+          Add +
+        </button>
+        </div>
+      </form
+      >
+    </ng-template>
+
     </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="navbar-content">
-        <mat-sidenav-container fullscreen>
-          <mat-sidenav [(opened)]="opened">
-            <div class="navbar-side">
-              <mat-toolbar color="primary">
-                <div>
-                  <button mat-icon-button style="padding: 0px; margin: 0px 10px;" (click)="opened = !opened">
-                    <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
-                  </button>
-                </div>
-                <div class="logo">
-                  <img src="../../../../assets/Logo1.png" alt="logo" />
-                </div>
-              </mat-toolbar>
-            </div>
 
-            <div>
-
-              <div>
-                <button 
-                mat-button 
-                (click)="openDialog(myTemplate)" 
-                style="padding: 0px 10px 0px 10px; margin: 5px 10px;">
-                  + Invite User
-                </button>
-    
-                <ng-template #myTemplate>
-                  <h1 mat-dialog-title>Add user to room</h1>
-                  <hr>
-                  <form
-                  #form="ngForm" 
-                  (ngSubmit)="handleAddUser(form)"
-                  >
-                    <div mat-dialog-content>
-                      <p>Please choosee ID user and room</p>
-                      <div>
-                        <mat-form-field class="form-add">
-                          <input 
-                          matInput 
-                          type="number" 
-                          placeholder="Room id"
-                          ngModel
-                          name="room_id"
-                          required
-                          >
-                        </mat-form-field><br>
-                        <mat-form-field class="form-add">
-                          <input 
-                          matInput 
-                          type="number" 
-                          placeholder="User id"
-                          ngModel
-                          name="user_id"
-                          required
-                          >
-                        </mat-form-field>
-                      </div>
-                    </div>
-                    <div mat-dialog-actions>
-                      <button 
-                      mat-button 
-                      mat-dialog-close
-                      >
-                      No Thanks
-                    </button>
-                      <button 
-                      mat-button 
-                      type="submit" 
-                      mat-dialog-close
-                      [disabled]="!form.valid"
-                      >
-                      Add +
-                    </button>
-                    </div>
-                  </form
-                  >
-                </ng-template>
-                  
-    
-              </div>
-
-              <mat-list>
-                <h3 mat-subheader>
-                  <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-right: 5px;">people
-                  </mat-icon>
-                  User in My Room
-                </h3>
-                <mat-list-item *ngFor="let roomMember of memberRoom" style="height: 20px;">
-                  <p mat-line style="font-size: 14px;">
-                    <mat-icon aria-hidden="false" aria-label="Example home icon" style="font-size: 12px;">
-                      radio_button_unchecked</mat-icon>{{roomMember.user.name}}
-                  </p>
-                </mat-list-item>
-              </mat-list>
-            </div>
-          </mat-sidenav>
-          <mat-sidenav-content class="hide-side-mobile">
-            <mat-toolbar color="primary">
-              <div>
-                <button class="menu" mat-icon-button style="padding: 0px; margin: 0px 10px;" (click)="opened = !opened">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
-                </button>
-              </div>
-              <div *ngFor="let roomMember of memberRoom">
-                <h4 *ngIf="roomMember.user_id === myIdCheck">{{roomMember.user.name}}</h4>
-              </div>
-              <span class="spacer"></span>
-              <div>
-                <button mat-button style="padding: 0px 15px 0px 0px; margin: 5px 10px;" [matMenuTriggerFor]="menu">
-                  <mat-icon aria-hidden="false" aria-label="Example home icon">more_vert</mat-icon>
-                  Room
-                </button>
-
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item *ngFor="let room of myListRoom" (click)="roomNav(room.id)">
-                    {{room.room_name}}
-                  </button>
-                </mat-menu>
-
-              </div>
-            </mat-toolbar>
-            <div>
-              <app-chat-side [sender]="myMessageList"></app-chat-side>
-            </div>
-            <div>
-              <app-form (myMessage)="myMessage($event)"></app-form>
-            </div>
-          </mat-sidenav-content>
-        </mat-sidenav-container>
+    <mat-sidenav-content
+    [ngStyle]="{'margin-left.px': contentMargin}"
+    >
+      <div>
+        <app-chat-side [sender]="myMessageList"></app-chat-side>
+      </div>
+      <div>
+        <app-form (myMessage)="myMessage($event)"></app-form>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 const Material = [
@@ -29,7 +30,8 @@ const Material = [
   MatSidenavModule,
   MatProgressSpinnerModule,
   MatListModule,
-  MatGridListModule
+  MatGridListModule,
+  MatChipsModule
 ];
 
 

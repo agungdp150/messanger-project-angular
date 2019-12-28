@@ -1,16 +1,24 @@
 section {
   padding: 10px;
-  display: flex;
   flex-direction: column;
   height: calc(93vh - 80px);
   overflow: auto;
 
-  .buble-chat {
-    padding: 10px;
+  .wrapper {
+    display: table-cell;
+    vertical-align: bottom;
+    height: calc(93vh - 80px);
+  }
+
+  .content {
+    max-height: calc(93vh - 80px);
+  }
+
+  .bubble-chat {
+    display: flex;
 
     .avatar {
-      margin: 0px 10px;
-
+      margin: 12px;
       img {
         width: 40px;
         height: 40px;
@@ -21,20 +29,14 @@ section {
     }
 
     .text-buble {
+      padding: 10px 0px;
+      max-width: 850px;
 
       h3 {
         padding: 0px;
-        margin: 0px 0px 5px 0px;
+        margin: 0px;
         font-size: 16px;
         font-weight: 600;
-      }
-
-      .user {
-        padding: 0px;
-        margin: 0px 0px 5px 0px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #cec8ca;
       }
 
       p {
