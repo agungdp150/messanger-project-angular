@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListMessage } from 'src/app/model/user.model';
+import { ListMessage, User } from 'src/app/model/user.model';
 import { RoomChatService } from 'src/app/service/room-chat.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserService } from 'src/app/service/user.service';
@@ -14,12 +14,14 @@ import { NgForm } from '@angular/forms';
 })
 export class MyChatComponent implements OnInit {
   myMessageList: ListMessage[];
-  isLoading = true;
-  userId: string;
-  myIdCheck: number;
+  users: User[];
   memberRoom = [];
   myListRoom = [];
+  userId: string;
+  roomID: number;
+  myIdCheck: number;
   isMenuOpen = true;
+  isLoading = true;
   opened = false;
   sideHalf = true;
   contentMargin = 250;
@@ -52,6 +54,10 @@ export class MyChatComponent implements OnInit {
       this.myListRoom = myRoom;
     });
 
+    this.userService.getUserList().subscribe(listUsers => {
+      this.users = listUsers;
+    });
+
     // tslint:disable-next-line: no-unused-expression
     this.authService;
   }
@@ -81,14 +87,34 @@ export class MyChatComponent implements OnInit {
     });
   }
 
-  handleAddUser(addUserRoom: NgForm ) {
-    const roomID = addUserRoom.value.room_id;
+  handleAddUser(addUserRoom: NgForm) {
+
+    this.routeActive.params.subscribe(params => {
+      const idRoom = params.id;
+      // tslint:disable-next-line: radix
+      this.roomID = parseInt(idRoom);
+    });
+
+    addUserRoom.value.room_id = this.roomID;
+    this.roomID = addUserRoom.value.room_id;
     const userID = addUserRoom.value.user_id;
 
-    this.userService.handleAddUser(roomID, userID).subscribe(
+    this.userService.handleAddUser(this.roomID, userID).subscribe(
       response => {
         this.memberRoom.push(response);
         alert('Success adding user!');
+      },
+      error => console.log(error)
+    );
+  }
+
+  handleNewRoom(createRoom: NgForm) {
+    const roomName = createRoom.value.room_name;
+
+    this.userService.handleNewRoom(roomName).subscribe(
+      response => {
+        this.myListRoom.push(response);
+        alert('Success create your room!');
       },
       error => console.log(error)
     );
@@ -99,7 +125,6 @@ export class MyChatComponent implements OnInit {
   }
 
   openSide() {
-    console.log('Open side', this.sideHalf);
     this.sideHalf = !this.sideHalf;
 
     if (!this.sideHalf) {
@@ -108,5 +133,4 @@ export class MyChatComponent implements OnInit {
       this.contentMargin = 250;
     }
   }
-
 }

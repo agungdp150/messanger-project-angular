@@ -1,30 +1,72 @@
 <div class="navbar-room">
   <mat-toolbar color="primary">
+
     <button 
     mat-icon-button
     (click)="openSide()"
+    class="btn-desktop"
     >
       <mat-icon>
         menu
       </mat-icon>
     </button>
-    <span>Second Line</span>
-    <span class="spacer"></span>
-    <div class="avatar">
-      <img [matMenuTriggerFor]="logout" style="cursor: pointer;" src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200" alt="avatar">
 
-      <mat-menu #logout="matMenu" yPosition="below">
-        <div fxLayout="column" fxLayoutAlign="center center">
+    <button 
+    mat-icon-button
+    (click)="opened = !opened"
+    class="btn-mobile"
+    >
+      <mat-icon>
+        menu
+      </mat-icon>
+    </button>
+
+    <div class="logo">
+      <a routerLink="/"> 
+        <img src="../../../../assets/Logo1.png" alt="logo" />
+      </a>
+    </div>
+    <span class="spacer"></span>
+    <div>
+      <div *ngFor="let roomMember of memberRoom">
+      <div class="avatar" *ngIf="(myIdCheck === roomMember.user.id)">
+        <img 
+        [matMenuTriggerFor]="logout" 
+        style="cursor: pointer;" 
+        src={{roomMember.user.profile_picture}} 
+        alt="avatar">
+      </div>
+     </div>
+
+      <mat-menu 
+      #logout="matMenu" 
+      yPosition="below"
+      >
+      <div *ngFor="let roomMember of memberRoom">
+        <div 
+        fxLayout="column" 
+        fxLayoutAlign="center center"
+        *ngIf="(myIdCheck === roomMember.user.id)"
+        >
           <img 
-          src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=1200" 
+          src={{roomMember.user.profile_picture}} 
           alt="avatar" 
           style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; object-position: center;">
-          <h4 style="margin: 0px; margin-top: 12px; padding: 0px; color: #fff;">Jhon Doe</h4>
-          <p style="font-size: 12px; padding: 0px 50px; margin: 8px 0px; color: #E91E63;">jhon@mail.com</p>
+          <h4 
+          style="margin: 0px; margin-top: 12px; padding: 0px; color: #fff;">{{roomMember.user.name}}</h4>
+          <p style="font-size: 12px; padding: 0px 50px; margin: 8px 0px; color: #E91E63;">{{roomMember.user.email}}</p>
         </div>
+      </div>
 
-        <div fxLayoutAlign="center center" fxLayout="column">
-        <button mat-raised-button color="primary">
+        <div 
+        fxLayoutAlign="center center" 
+        fxLayout="column">
+        <button 
+        mat-raised-button 
+        color="primary"
+        *ngIf="authService.handleProtectPage()"
+        (click)="authService.handleLogout()"
+        >
           Logout
         </button>
       </div>
@@ -70,41 +112,33 @@
 
         </mat-list-item>
 
-        <div class="room-style">
-        <mat-list-item>
+        <div class="room-style" *ngFor="let room of myListRoom">
+        <mat-list-item style="cursor: pointer;" (click)="roomNav(room.id)">
           <mat-icon mat-list-icon>label</mat-icon>
-          <a mat-line>Room1</a>
-        </mat-list-item> 
-        <mat-list-item>
-          <mat-icon mat-list-icon>label</mat-icon>
-          <a mat-line>Room1</a>
-        </mat-list-item> 
-        <mat-list-item>
-          <mat-icon mat-list-icon>label</mat-icon>
-          <a mat-line>Room1</a>
+          <a mat-line>{{room.room_name}}</a>
         </mat-list-item> 
       </div>
 
       <mat-divider></mat-divider>
-      <mat-list-item>
+      <div *ngFor="let roomMember of memberRoom">
+      <mat-list-item *ngIf="(myIdCheck === roomMember.user.id)">
         <div class="avatar1">
-        <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
-        <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+        <img src={{roomMember.user.profile_picture}} alt="avatar">
+        <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
       </div>
       </mat-list-item>
+      </div>
       <mat-divider></mat-divider>
 
-      <div class="avatar-style">
-        <mat-list-item>
-          <div class="avatar">
-          <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
-          <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+      <div class="avatar-style" *ngFor="let roomMember of memberRoom">
+        <mat-list-item *ngIf="(myIdCheck !== roomMember.user.id)">
+          <div class="avatar" *ngIf="roomMember.user.profile_picture !== ''">
+          <img src={{roomMember.user.profile_picture}} alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
         </div>
-        </mat-list-item>
-        <mat-list-item>
-          <div class="avatar">
-          <img src=" https://images.pexels.com/photos/3326363/pexels-photo-3326363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="avatar">
-          <h4 mat-line style="padding-right: 12px;">Jhon Doe</h4>
+        <div class="avatar" *ngIf="roomMember.user.profile_picture === ''">
+          <img src="../../../../assets/blank-profile.png" alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
         </div>
         </mat-list-item>
       </div>
@@ -114,39 +148,26 @@
     </mat-list>
 
     <ng-template #newRoom>
-      <h1 mat-dialog-title>Create New Channel</h1>
-    </ng-template>
-
-    <ng-template #inviteUser>
-      <h1 mat-dialog-title>Add user to room</h1>
+      <h1 mat-dialog-title>Create New Room</h1>
       <hr>
       <form
       #form="ngForm" 
-      (ngSubmit)="handleAddUser(form)"
+      (ngSubmit)="handleNewRoom(form)"
       >
         <div mat-dialog-content>
-          <p>Please choosee ID user and room</p>
+          <p>Please insert your room name?</p>
           <div>
-            <mat-form-field class="form-add">
+            <mat-form-field>
               <input 
               matInput 
-              type="number" 
-              placeholder="Room id"
-              ngModel
-              name="room_id"
+              type="text" 
+              placeholder="Room name" 
+              ngModel 
+              name="room_name"
+              autocomplete="off"
               required
               >
             </mat-form-field><br>
-            <mat-form-field class="form-add">
-              <input 
-              matInput 
-              type="number" 
-              placeholder="User id"
-              ngModel
-              name="user_id"
-              required
-              >
-            </mat-form-field>
           </div>
         </div>
         <div mat-dialog-actions>
@@ -154,7 +175,52 @@
           mat-button 
           mat-dialog-close
           >
-          No Thanks
+          Cancel
+        </button>
+          <button 
+          mat-button 
+          type="submit" 
+          mat-dialog-close
+          style="margin: 10px 0px;"
+          [disabled]="!form.valid"
+          >
+          New Room
+        </button>
+        </div>
+      </form
+      >
+    </ng-template>
+
+    <ng-template #inviteUser>
+      <h1 mat-dialog-title>Add user to room</h1>
+      <hr>
+      <form 
+      #form="ngForm" 
+      (ngSubmit)="handleAddUser(form)"
+      >
+        <mat-form-field>
+          <input 
+          type="number" 
+          matInput 
+          [matAutocomplete]="auto" 
+          placeholder="User ID"
+          ngModel
+          name="user_id"
+          required
+          >
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let user of users" [value]="user.id">
+              {{user.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+          <button 
+          mat-button 
+          mat-dialog-close
+          >
+          Cancel
         </button>
           <button 
           mat-button 
@@ -162,13 +228,78 @@
           mat-dialog-close
           [disabled]="!form.valid"
           >
-          Add +
+          Add
         </button>
         </div>
-      </form
-      >
+      </form>
     </ng-template>
 
+    </mat-sidenav>
+
+    <mat-sidenav 
+    position="end"
+    [(opened)]="opened"
+    mode="over"
+    class="mobile-sidenav"
+    >
+    
+    <mat-list class="my-list">
+
+      <div style="overflow: hidden;">
+        <mat-list-item>
+          <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" style="margin-right: 15px;"><mat-icon>add</mat-icon></button>
+
+          <mat-menu #menu="matMenu">
+            <button 
+            mat-menu-item
+            (click)="openDialog(newRoom)"
+            >
+              Create Room
+            </button>
+            <button 
+            mat-menu-item
+            (click)="openDialog(inviteUser)"
+            >
+              Invite User
+            </button>
+          </mat-menu>
+
+        </mat-list-item>
+
+        <div class="room-style" *ngFor="let room of myListRoom">
+        <mat-list-item style="cursor: pointer;" (click)="roomNav(room.id)">
+          <mat-icon mat-list-icon>label</mat-icon>
+          <a mat-line>{{room.room_name}}</a>
+        </mat-list-item> 
+      </div>
+
+      <mat-divider></mat-divider>
+      <div *ngFor="let roomMember of memberRoom">
+      <mat-list-item *ngIf="(myIdCheck === roomMember.user.id)">
+        <div class="avatar1">
+        <img src={{roomMember.user.profile_picture}} alt="avatar">
+        <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
+      </div>
+      </mat-list-item>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="avatar-style" *ngFor="let roomMember of memberRoom">
+        <mat-list-item *ngIf="(myIdCheck !== roomMember.user.id)">
+          <div class="avatar" *ngIf="roomMember.user.profile_picture !== ''">
+          <img src={{roomMember.user.profile_picture}} alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
+        </div>
+        <div class="avatar" *ngIf="roomMember.user.profile_picture === ''">
+          <img src="../../../../assets/blank-profile.png" alt="avatar">
+          <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
+        </div>
+        </mat-list-item>
+      </div>
+
+      </div>
+
+    </mat-list>
     </mat-sidenav>
 
     <mat-sidenav-content
@@ -183,3 +314,4 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+

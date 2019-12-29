@@ -1,73 +1,24 @@
 <section #scrollDown>
 
   <div class="wrapper">
-    <div class="content">
+    <div class="content" *ngFor="let sending of sender">
 
        <div class="bubble-chat">
 
-        <div class="avatar">
-          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
+        <div class="avatar" *ngIf="sending.sender.profile_picture !== ''">
+          <img src={{sending.sender.profile_picture}} alt="user">
         </div>
+
+        <div class="avatar" *ngIf="sending.sender.profile_picture === ''">
+          <img src="../../../../assets/blank-profile.png" alt="user">
+        </div>
+
         <div class="text-buble">
-          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
-            6/15/15, 9:03 AM
+          <h3>{{sending.sender.name}}<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
+            {{sending.created_at | date:'short'}}
           </span></h3>
-          <p>Hello Friend</p>
+          <p>{{sending.content}}</p>
         </div>
-       </div>
-
-       <div class="bubble-chat">
-
-        <div class="avatar">
-          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
-        </div>
-        <div class="text-buble">
-          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
-            6/15/15, 9:03 AM
-          </span></h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor, vero.</p>
-        </div>
-
-       </div>
-
-       <div class="bubble-chat">
-
-        <div class="avatar">
-          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
-        </div>
-        <div class="text-buble">
-          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
-            6/15/15, 9:03 AM
-          </span></h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-          </p>
-        </div>
-        
-       </div>
-
-       <div class="bubble-chat">
-
-        <div class="avatar">
-          <img src="https://images.pexels.com/photos/1684915/pexels-photo-1684915.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user">
-        </div>
-        <div class="text-buble">
-          <h3>Jhon Doe<span style="font-size: 12px; font-weight: 300;  margin-left: 5px;">
-            6/15/15, 9:03 AM
-          </span></h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-            Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque! 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, maxime ipsam. Ratione fuga vitae sint adipisci, officiis maxime minima expedita aperiam facilis maiores itaque nobis dolorem molestiae inventore rerum eaque!
-          </p>
-        </div>
-
        </div>
 
     </div>

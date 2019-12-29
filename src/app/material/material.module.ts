@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 const Material = [
@@ -31,7 +32,8 @@ const Material = [
   MatProgressSpinnerModule,
   MatListModule,
   MatGridListModule,
-  MatChipsModule
+  MatChipsModule,
+  MatAutocompleteModule
 ];
 
 

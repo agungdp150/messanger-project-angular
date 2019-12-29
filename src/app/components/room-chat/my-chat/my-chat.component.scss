@@ -1,4 +1,29 @@
 .navbar-room {
+
+  .btn-desktop {
+
+    @media only screen and (max-width: 599px) {
+      display: none;
+    }
+  }
+
+  .btn-mobile {
+    display: none;
+
+    @media only screen and (max-width: 599px) {
+      
+      display: unset;
+    }
+  }
+
+  .logo {
+    img {
+      width: 40%;
+      margin-top: 15px;
+      margin-left: 10px;
+    }
+  }
+
   .spacer {
     flex: 1 1 auto;
   }
@@ -20,8 +45,17 @@
   .container-side {
     height: calc(100vh - 64px);
 
+    @media only screen and (max-width: 599px) {
+      
+      height: calc(101vh - 62px);
+    }
+
     #sidenav {
       width: 250px;
+
+      @media only screen and (max-width: 599px) {
+        display: none;
+      }
     }
 
     #sidenav.menu-close {
@@ -41,7 +75,7 @@
       }
       mat-list-item {
         font-size: 12px;
-        height: 35px;
+        height: 0px;
       }
     }
 
@@ -83,6 +117,17 @@
           }
         }
       }
+    }
+  }
+
+  .mobile-sidenav {
+    width: 100%;
+    display: none;
+  }
+
+  @media only screen and (max-width: 599px) {
+    .mobile-sidenav {
+      display: unset;
     }
   }
 }
