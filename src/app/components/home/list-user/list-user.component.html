@@ -1,161 +1,232 @@
-<div class="h-container">
-  <mat-tab-group class="h-list">
-    <mat-tab label="User" class="h-tab1">
+<div class="home-container">
 
-      <button 
-      mat-raised-button 
-      style="margin: 15px 0px 10px" 
-      (click)="openDialog()">
-        Add User 
-        <mat-icon>person_add</mat-icon>
-      </button>
+  <div>
+    <mat-sidenav-container class="side-container">
+      <mat-sidenav *ngIf="authService.handleProtectPage()" mode="side" opened class="side-card">
 
-      <hr>
-
-      <div 
-      class="h-list-container">
-        <mat-grid-list 
-        [cols]="breakpoint" 
-        rowHeight="200" 
-        (window:resize)="onResize($event)" 
-        gutterSize="10px">
-
-          <div *ngFor="let user of users">
-            <mat-grid-tile class="color-change">
-
-              <mat-grid-tile-header class="profile-image">
-
-                <div *ngIf="user.profile_picture !== ''">
-                  <img src={{user.profile_picture}} alt="profile">
-                </div>
-                <div *ngIf="user.profile_picture === ''">
-                  <img src="../../../../assets//e73877aee5b14670b927bea6dd16996f.jpg" alt="profile">
-                </div>
-                <span>
-                  <h3>{{user.name}}</h3>
-                </span>
-              </mat-grid-tile-header>
-              <p style="color: white;">User ID: {{user.id}}</p>
-              <mat-grid-tile-footer>
-                <button mat-button (click)="detailUser(user.id)">View</button>
-              </mat-grid-tile-footer>
-
-            </mat-grid-tile>
-          </div>
-
-        </mat-grid-list>
-
-      </div>
-
-    </mat-tab>
-    <mat-tab label="Room" class="h-tab2">
-
-      <h1 
-      *ngIf="!authService.handleProtectPage()" 
-      style="text-align: center; font-weight: 400;">
-        Please Login...
-      </h1>
-      
-      <div *ngIf="authService.handleProtectPage()">
-
-        <button 
-        mat-raised-button 
-        (click)="openCreateRoom(myTemplate)" 
-        style="margin: 15px 0px 10px">
-          Create Room 
-          <mat-icon>add</mat-icon>
-        </button>
-
-        <ng-template #myTemplate>
-          <h1 mat-dialog-title>Create New room</h1>
-          <hr>
-          <form
-          #form="ngForm" 
-          (ngSubmit)="handleNewRoom(form)"
-          >
-            <div mat-dialog-content>
-              <p>Please choosee ID user and room</p>
-              <div>
-                <mat-form-field class="form-add">
-                  <input 
-                  matInput 
-                  type="text" 
-                  placeholder="Room name" 
-                  ngModel 
-                  name="room_name" 
-                  required
+        <div style="padding: 20px;">
+          <mat-card class="style-card">
+            <div *ngFor="let user of users">
+              <div *ngIf="myIdCheck === user.id">
+                <label for="img-input" style="cursor: pointer;">
+                  <div 
+                  class="avatar" 
+                  *ngIf="user.profile_picture === '' && !previewUrl" 
+                  fxLayout="row" 
+                  fxLayoutAlign="center">
+                    <img 
+                    src="../../../../assets/blank-profile.png" 
+                    alt="avatar-user">
+                  </div>
+                  <div 
+                  class="avatar" 
+                  *ngIf="user.profile_picture !== '' && !previewUrl" 
+                  fxLayout="row" 
+                  fxLayoutAlign="center">
+                    <img 
+                    src="{{user.profile_picture}}" 
+                    alt="avatar-user">
+                  </div>
+                  <div 
+                  class="avatar" 
+                  *ngIf="previewUrl"
+                  fxLayout="row" 
+                  fxLayoutAlign="center"
                   >
-                </mat-form-field><br>
+            
+                    <img 
+                    [src]="previewUrl" 
+                    alt="avatr-user">
+            
+                  </div>
+                </label>
+                <div style="text-align: center;">
+                  <h2 style="font-weight: 500; padding: 0px; margin: 10px 0px 0px 0px;">
+                    {{user.name}}
+                  </h2>
+                  <p style="color: #E91E63; padding: 0px; margin: 10px 0px 0px 0px; font-size: 13px;">
+                    {{user.email}}
+                  </p>
+                </div>
+                <div>
+                  <div style="display: none;">
+                    <input 
+                    type="file" 
+                    name="image" 
+                    id="img-input"
+                    (change)="uploadImage($event)"
+                    >
+                  </div>
+                  <div style="text-align: center; margin: 20px 0px 5px 0px;">
+                    <button 
+                    mat-raised-button 
+                    color="primary" 
+                    style="font-size: 12px; padding: 0px 10px;"
+                    (click)="onSubmit()"
+                    >
+                    Change Picture
+                  </button>
+                  </div>
+                </div>
               </div>
             </div>
-            <div mat-dialog-actions>
-              <button 
-              mat-button 
-              mat-dialog-close
-              >
-              No Thanks
-            </button>
-              <button 
-              mat-button 
-              type="submit" 
-              mat-dialog-close
-              style="margin: 10px 0px;"
-              [disabled]="!form.valid"
-              >
-              Add +
-            </button>
-            </div>
-          </form
-          >
-        </ng-template>
-        
-        <hr>
-
-        <div 
-        class="spinner" 
-        *ngIf="navigateRoom">
-          <mat-spinner diameter="30"></mat-spinner>
-          <p style="margin: 5px 0px 0px 20px;">
-            Please Wait...
-          </p>
+          </mat-card>
         </div>
 
-        <div class="h-list-container">
+        <div class="list-container">
+          <mat-list>
 
-          <mat-grid-list 
-          [cols]="breakpoint" 
-          rowHeight="200" 
-          (window:resize)="onResize($event)" 
-          gutterSize="10px">
+            <div fxLayout="row">
+
+              <h3 mat-subheader>Your Room</h3>
+              <button mat-icon-button matTooltip="Create new room" (click)="openCreateRoom(newRoom)">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+
+            </div>
+
+            <ng-template #newRoom>
+              <h1 mat-dialog-title>Create New Room</h1>
+              <hr>
+              <form #form="ngForm" (ngSubmit)="handleNewRoom(form)">
+                <div mat-dialog-content>
+                  <p>Please insert your room name?</p>
+                  <div>
+                    <mat-form-field>
+                      <input matInput type="text" placeholder="Room name" ngModel name="room_name" autocomplete="off"
+                        required>
+                    </mat-form-field><br>
+                  </div>
+                </div>
+                <div mat-dialog-actions>
+                  <button mat-button mat-dialog-close>
+                    Cancel
+                  </button>
+                  <button mat-button type="submit" mat-dialog-close style="margin: 10px 0px;" [disabled]="!form.valid">
+                    New Room
+                  </button>
+                </div>
+              </form>
+            </ng-template>
 
             <div *ngFor="let room of myListRoom">
-              <mat-grid-tile  class="color-change">
-
-                <mat-grid-tile-header>
-                  <h3>{{room.room_name}}</h3>
-                </mat-grid-tile-header>
-                <p 
-                style="color: white;">
-                Room ID: {{room.id}}
-                </p>
-                <mat-grid-tile-footer>
-                  <button 
-                  mat-button 
-                  (click)="myChatRoom(room.id)"
-                  style="padding: 0px 10px;"
-                  >
-                  Enter Room
-                  </button>
-                </mat-grid-tile-footer>
-
-              </mat-grid-tile>
+              <div class="style-list">
+                <mat-list-item (click)="myChatRoom(room.id)">
+                  <mat-icon mat-list-icon>label_important</mat-icon>
+                  <p mat-line matTooltip="Room ID: {{room.id}}">{{room.room_name}}</p>
+                </mat-list-item>
+              </div>
             </div>
+          </mat-list>
+        </div>
 
-          </mat-grid-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content class="content-container">
+        <div>
+          <h2>Member List</h2>
+          <button *ngIf="authService.handleProtectPage()" (click)="openCreateRoom(addMember)" mat-raised-button color="primary">Add Member</button>
+        </div>
+
+        <ng-template #addMember>
+          <h1 mat-dialog-title>Add user to room</h1>
+          <hr>
+          <form #form="ngForm" (ngSubmit)="handleAddUser(form)">
+
+            <mat-form-field>
+              <input 
+              type="number" 
+              matInput 
+              [matAutocomplete]="room" 
+              placeholder="Room ID" 
+              ngModel 
+              name="room_id"
+              required>
+              <mat-autocomplete #room="matAutocomplete">
+                <mat-option 
+                *ngFor="let room of myListRoom" 
+                [value]="room.id">
+                  {{room.room_name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field><br>
+
+            <mat-form-field>
+              <input 
+              type="number" 
+              matInput 
+              [matAutocomplete]="user" 
+              placeholder="User ID" 
+              ngModel name="user_id"
+              required>
+              <mat-autocomplete #user="matAutocomplete">
+                <mat-option 
+                *ngFor="let user of users" 
+                [value]="user.id">
+                  {{user.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+              <button mat-button mat-dialog-close>
+                Cancel
+              </button>
+              <button mat-button type="submit" mat-dialog-close [disabled]="!form.valid">
+                Add
+              </button>
+            </div>
+          </form>
+        </ng-template>
+
+        <hr>
+        <div class="mat-elevation-z8">
+
+          <mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="no">
+              <mat-header-cell *matHeaderCellDef>No</mat-header-cell>
+              <mat-cell *matCellDef="let element; let i = index"> {{ i+1 }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.email }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="userId">
+              <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+              <mat-cell *matCellDef="let element"> <button mat-icon-button (click)="detailUser(element.id)">
+                  <mat-icon aria-hidden="false" aria-label="Example visibility icon">visibility</mat-icon>
+                </button> </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" style="top: -20px"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+          </mat-table>
+
+          <div class="spinner" *ngIf="isLoading">
+            <mat-spinner diameter="30"></mat-spinner>
+            <p style="margin: 5px 0px 0px 20px;">Please Wait...</p>
+          </div>
+
 
         </div>
 
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
 </div>

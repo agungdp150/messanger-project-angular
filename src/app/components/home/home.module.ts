@@ -3,22 +3,21 @@ import { HomeRoutingModule } from './home.routing.module';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListUserComponent } from './list-user/list-user.component';
-import { UserAddComponent } from './user-add/user-add.component';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    UserAddComponent,
     ListUserComponent
   ],
-  entryComponents: [UserAddComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   exports : [
     SharedModule,

@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 const Material = [
@@ -33,7 +34,8 @@ const Material = [
   MatListModule,
   MatGridListModule,
   MatChipsModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTooltipModule
 ];
 
 
