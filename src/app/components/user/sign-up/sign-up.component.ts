@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../service/auth.service';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +13,7 @@ export class SignUpComponent implements OnInit {
 
   isLoading = false;
   error = false;
-
+  decodeToken: any;
 
   constructor(
     private authService: AuthService,
@@ -39,7 +40,6 @@ export class SignUpComponent implements OnInit {
       response => {
         console.log(response);
         this.isLoading = false;
-        this.routeNavigate.navigate(['/user/login']);
       },
       errorRes => {
         console.log(errorRes);
@@ -47,6 +47,26 @@ export class SignUpComponent implements OnInit {
         this.error = true;
       }
     );
+
+    setTimeout(() => {
+      this.authService.loginUsers(email, password).subscribe(
+        response => {
+          this.decodeToken = JSON.stringify(response);
+          const decoded = jwt_decode(this.decodeToken);
+          // console.log(decoded);
+          localStorage.setItem('token', response);
+          localStorage.setItem('id', decoded.user_id);
+          this.routeNavigate.navigate(['/']);
+          this.isLoading = false;
+        },
+        errorRes => {
+          console.log(errorRes);
+          this.error = true;
+          this.isLoading = false;
+        }
+      );
+    }, 2500);
+
     setTimeout(() => {
       this.error = false;
     }, 3000);
