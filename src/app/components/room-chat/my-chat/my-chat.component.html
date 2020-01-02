@@ -31,9 +31,16 @@
       <div *ngFor="let roomMember of memberRoom">
       <div class="avatar" *ngIf="(myIdCheck === roomMember.user.id)">
         <img 
+        *ngIf="roomMember.user.profile_picture !== ''"
         [matMenuTriggerFor]="logout" 
         style="cursor: pointer;" 
         src={{roomMember.user.profile_picture}} 
+        alt="avatar">
+        <img 
+        *ngIf="roomMember.user.profile_picture === ''"
+        [matMenuTriggerFor]="logout" 
+        style="cursor: pointer;" 
+        src="../../../../assets/blank-profile.png"
         alt="avatar">
       </div>
      </div>
@@ -122,8 +129,12 @@
       <mat-divider></mat-divider>
       <div *ngFor="let roomMember of memberRoom">
       <mat-list-item *ngIf="(myIdCheck === roomMember.user.id)">
-        <div class="avatar1">
+        <div class="avatar1" *ngIf="roomMember.user.profile_picture !== ''">
         <img src={{roomMember.user.profile_picture}} alt="avatar">
+        <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
+      </div>
+      <div class="avatar1" *ngIf="roomMember.user.profile_picture === ''">
+        <img src="../../../../assets/blank-profile.png" alt="avatar">
         <h4 mat-line style="padding-right: 12px;">{{roomMember.user.name}}</h4>
       </div>
       </mat-list-item>
